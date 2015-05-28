@@ -1,0 +1,38 @@
+{
+  "name": "EZ Plus",
+  "title": "EZ Plus",
+  "version": "1.0.0",
+  "description": "A jQuery image zoom plug-in, with tints, easing and gallery integration.",
+  "author": {
+    "name": "Igor Lino",
+    "url": "http://igorlino.github.io/elevatezoom-plus/"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/mit-license.php"
+    }
+  ],
+  "main": [
+    "js/jquery.ez-plus.js",
+	"css/jquery.ez-plus.css"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "bugs": "https://github.com/igorlino/elevatezoom-plus/issues",
+  "homepage": "http://igorlino.github.io/elevatezoom-plus/",
+  "docs" : "http://igorlino.github.io/elevatezoom-plus/examples",
+  "demo" : "http://igorlino.github.io/elevatezoom-plus/examples",
+  "dependencies": {
+    "jquery": ">=1.11.2"
+  },
+  "keywords": [
+    "zoom",
+    "effects",
+    "elements",
+    "zooming"
+  ]
+}
