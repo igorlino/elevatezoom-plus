@@ -1,7 +1,7 @@
 {
-  "name": "elevatezoom",
-  "title": "elevateZoom",
-  "version": "3.1.0",
+  "name": "EZ Plus",
+  "title": "EZ Plus",
+  "version": "1.0.0",
   "description": "A jQuery image zoom plugin, with tints, easing and gallery integration.",
   "author": {
     "name": "Andy Eades",

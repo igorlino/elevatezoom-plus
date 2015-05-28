@@ -1,7 +1,7 @@
 [jQuery Zoom Plugin](http://igorlino.github.io/elevatezoom-plus/)
 ================================
 
-EZ Plus is an up-to-date jQuery image zoom plug-in based on [EZ](https://github.com/elevateweb/elevatezoom)
+[EZ Plus](http://igorlino.github.io/elevatezoom-plus/) is an up-to-date jQuery image zoom plug-in based on [EZ](https://github.com/elevateweb/elevatezoom)
 
 ## Installation
 
@@ -38,5 +38,4 @@ Include jQuery and the plug-in on a page. Include your images and initialise the
 For more information on how to setup and customise, [check the examples](http://igorlino.github.io/elevatezoom-plus/).
 
 ## License
-Copyright (c) 2015 Igor Lino
-Dual licensed under the GPL and MIT licenses.
+Licensed under MIT license.
