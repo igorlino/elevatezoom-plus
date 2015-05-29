@@ -4,8 +4,8 @@
 	<meta charset='utf-8'/>
 	<title>jQuery EZ Plus Demo</title>
   <link rel="stylesheet" href="../css/jquery.ez-plus.css" />
-	<script src='https://code.jquery.com/jquery-1.11.2.min.js'></script>
-	<script src='../js/jquery.ez-plus.js'></script>
+	<script src='https://code.jquery.com/jquery-1.11.3.min.js'></script>
+	<script src='../src/jquery.ez-plus.js'></script>
 </head>
 <body>
 <h1>Basic Zoom Example</h1>
@@ -24,34 +24,34 @@
 <h1>Gallery & Lightbox</h1>
 
 
-<img id="zoom_03" src="images/small/image1.png" data-zoom-image="images/large/image1.jpg"/> 
-<div id="gallery_01"> 
-  <a href="#" data-image="images/small/image1.png" data-zoom-image="images/large/image1.jpg"> 
-    <img id="img_01" src="images/thumb/image1.jpg" /> 
-  </a> 
-  <a href="#" data-image="images/small/image2.png" data-zoom-image="images/large/image2.jpg"> 
-    <img id="img_01" src="images/thumb/image2.jpg" /> 
-  </a> 
-  <a href="#" data-image="images/small/image3.png" data-zoom-image="images/large/image3.jpg"> 
-    <img id="img_01" src="images/thumb/image3.jpg" /> 
-  </a> 
-  <a href="#" data-image="images/small/image4.png" data-zoom-image="images/large/image4.jpg"> 
-    <img id="img_01" src="images/thumb/image4.jpg" /> 
-  </a> 
+<img id="zoom_03" src="images/small/image1.png" data-zoom-image="images/large/image1.jpg"/>
+<div id="gallery_01">
+  <a href="#" data-image="images/small/image1.png" data-zoom-image="images/large/image1.jpg">
+    <img id="img_01" src="images/thumb/image1.jpg" />
+  </a>
+  <a href="#" data-image="images/small/image2.png" data-zoom-image="images/large/image2.jpg">
+    <img id="img_01" src="images/thumb/image2.jpg" />
+  </a>
+  <a href="#" data-image="images/small/image3.png" data-zoom-image="images/large/image3.jpg">
+    <img id="img_01" src="images/thumb/image3.jpg" />
+  </a>
+  <a href="#" data-image="images/small/image4.png" data-zoom-image="images/large/image4.jpg">
+    <img id="img_01" src="images/thumb/image4.jpg" />
+  </a>
 </div>
 
 <script type="text/javascript">
 $(document).ready(function () {
-  $("#zoom_03").ezPlus({gallery:'gallery_01', cursor: 'pointer', galleryActiveClass: "active", imageCrossfade: true, loadingIcon: "images/spinner.gif"}); 
+  $("#zoom_03").ezPlus({gallery:'gallery_01', cursor: 'pointer', galleryActiveClass: "active", imageCrossfade: true, loadingIcon: "images/spinner.gif"});
 
-  $("#zoom_03").bind("click", function(e) {  
+  $("#zoom_03").bind("click", function(e) {
     var ez =   $('#zoom_03').data('ezPlus');
-    ez.closeAll(); //NEW: This function force hides the lens, tint and window 
+    ez.closeAll(); //NEW: This function force hides the lens, tint and window
     $.fancybox(ez.getGalleryList());
     return false;
-  }); 
+  });
 
-}); 
+});
 
 </script>
 
@@ -90,9 +90,9 @@ $(document).ready(function () {
 </div>
 
 <script>
-  $("#zoom_04a").ezPlus({zoomWindowPosition: 1}); 
-  $("#zoom_04b").ezPlus({zoomWindowPosition: 6}); 
-  $("#zoom_04c").ezPlus({zoomWindowPosition: "demo-container", zoomWindowHeight: 200, zoomWindowWidth:200, borderSize: 0, easing:true}); 
+  $("#zoom_04a").ezPlus({zoomWindowPosition: 1});
+  $("#zoom_04b").ezPlus({zoomWindowPosition: 6});
+  $("#zoom_04c").ezPlus({zoomWindowPosition: "demo-container", zoomWindowHeight: 200, zoomWindowWidth:200, borderSize: 0, easing:true});
 </script>
 
 <hr />
@@ -109,8 +109,8 @@ $(document).ready(function () {
 <script>
 $(function () {
   $("#responsive").ezPlus({
-    tint:true, 
-    tintColour:'#0F0', 
+    tint:true,
+    tintColour:'#0F0',
     tintOpacity:0.5,
     respond: [
       {
@@ -126,7 +126,7 @@ $(function () {
         enabled: false
       }
     ]
-  }); 
+  });
 })
 </script>
 
