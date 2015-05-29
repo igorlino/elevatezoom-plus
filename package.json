@@ -1,34 +1,48 @@
 {
+    "name": "ez-plus",
+    "title": "EZ Plus",
+    "version": "3.1.0",
+    "description": "A jQuery image zoom plug-in, with tints, easing and gallery integration.",
+    "keywords": [
+        "zoom",
+        "effects",
+        "elements",
+        "zooming"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/igorlino/elevatezoom-plus.git"
     },
-  
-  "name": "ez-plus",
-  "title": "EZ Plus",
-  "version": "3.1.0",
-  "description": "A jQuery image zoom plug-in, with tints, easing and gallery integration.",
-  "author": {
-    "name": "Andy Eades",
-    "url": "http://www.elevateweb.co.uk"
-  },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://www.opensource.org/licenses/mit-license.php"
-    }
-  ],
-  "bugs": "https://github.com/igorlino/elevatezoom-plus/issues",
-  "homepage": "http://igorlino.github.io/elevatezoom-plus/",
-  "docs" : "http://igorlino.github.io/elevatezoom-plus/examples",
-  "demo" : "http://igorlino.github.io/elevatezoom-plus/examples",
-  "dependencies": {
-    "jquery": ">=1.11.2"
-  },
-  "keywords": [
-    "zoom",
-    "effects",
-    "elements",
-    "zooming"
-  ]
+    "author": {
+        "name": "Andy Eades",
+        "url": "http://www.elevateweb.co.uk"
+    },
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Igor Lino",
+            "email": "igorlino@github.com",
+            "url": "https://github.com/igorlino"
+        }
+    ],
+    "bugs": "https://github.com/igorlino/elevatezoom-plus/issues",
+    "homepage": "http://igorlino.github.io/elevatezoom-plus/",
+    "docs": "http://igorlino.github.io/elevatezoom-plus/examples",
+    "demo": "http://igorlino.github.io/elevatezoom-plus/examples",
+    "dependencies": {
+        "jquery": ">=2.1.4"
+    },
+    "devDependencies": {
+        "grunt": "^0.4.5",
+        "grunt-cli": "~0.1.13",
+        "grunt-contrib-coffee": "^0.13.0",
+        "grunt-contrib-concat": "^0.5.1",
+        "grunt-contrib-jshint": "^0.11.2",
+        "grunt-contrib-uglify": "^0.9.1",
+        "grunt-contrib-watch": "^0.6.1"
+    },
+    "scripts": {
+        "test": "grunt travis --verbose"
+    },
+    "readmeFilename": "README.md"
 }
