@@ -4,7 +4,7 @@
         "url": "https://github.com/igorlino/elevatezoom-plus.git"
     },
   
-  "name": "EZ Plus",
+  "name": "ez-plus",
   "title": "EZ Plus",
   "version": "3.1.0",
   "description": "A jQuery image zoom plug-in, with tints, easing and gallery integration.",
