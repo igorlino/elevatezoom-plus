@@ -386,6 +386,8 @@ if (typeof Object.create !== 'function') {
 
             });
 
+            self.zoomContainer.bind('click', self.options.onImageClick);
+
             self.zoomContainer.bind('mousemove', function (e) {
 
                 if (self.overWindow == false) {
@@ -1792,6 +1794,7 @@ if (typeof Object.create !== 'function') {
         onImageSwapComplete: $.noop,
         onZoomedImageLoaded: function () {
         },
+        onImageClick: $.noop,
         preloading: 1, //by default, load all the images, if 0, then only load images after activated (PLACEHOLDER FOR NEXT VERSION)
         respond: [],
         responsive: true,
