@@ -795,6 +795,7 @@ if (typeof Object.create !== 'function') {
             var self = this;
             if (change == "show") {
                 if (!self.isWindowActive) {
+                    self.options.onShow(self);
                     if (self.options.zoomWindowFadeIn) {
                         self.zoomWindow.stop(true, true, false).fadeIn(self.options.zoomWindowFadeIn);
                     }
@@ -1836,8 +1837,8 @@ if (typeof Object.create !== 'function') {
         onComplete: $.noop,
         onImageSwap: $.noop,
         onImageSwapComplete: $.noop,
-        onZoomedImageLoaded: function () {
-        },
+        onShow: $.noop,
+        onZoomedImageLoaded: $.noop,
         onImageClick: $.noop,
         preloading: 1, //by default, load all the images, if 0, then only load images after activated (PLACEHOLDER FOR NEXT VERSION)
         respond: [],
