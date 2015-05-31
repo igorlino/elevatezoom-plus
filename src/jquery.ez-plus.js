@@ -245,7 +245,7 @@ if (typeof Object.create !== 'function') {
             //self.zoomContainer = $('<div/>').addClass('zoomContainer').css({"position":"relative", "height":self.nzHeight, "width":self.nzWidth});
 
             self.zoomContainer = $('<div class="zoomContainer" style="-webkit-transform: translateZ(0);position:absolute;left:' + self.nzOffset.left + 'px;top:' + self.nzOffset.top + 'px;height:' + self.nzHeight + 'px;width:' + self.nzWidth + 'px;"></div>');
-            $('body').append(self.zoomContainer);
+            $(self.options.zoomContainerAppendTo).append(self.zoomContainer);
 
 
             //this will add overflow hidden and contrain the lens on lens mode
@@ -1806,6 +1806,7 @@ if (typeof Object.create !== 'function') {
         tintOpacity: 0.4, //opacity of the tint
         touchEnabled: true,
         zoomActivation: "hover", // Can also be click (PLACEHOLDER FOR NEXT VERSION)
+        zoomContainerAppendTo: "body", //zoom container parent selector
         zoomLevel: 1, //default zoom level of image
         zoomTintFadeIn: false,
         zoomTintFadeOut: false,
