@@ -243,7 +243,7 @@ if (typeof Object.create !== 'function') {
             //create the div's                                                + ""
             //self.zoomContainer = $('<div/>').addClass('zoomContainer').css({"position":"relative", "height":self.nzHeight, "width":self.nzWidth});
 
-            self.zoomContainer = $('<div class="zoomContainer" style="position:absolute;left:' + self.nzOffset.left + 'px;top:' + self.nzOffset.top + 'px;height:' + self.nzHeight + 'px;width:' + self.nzWidth + 'px;"></div>');
+            self.zoomContainer = $('<div class="zoomContainer" style="position:absolute;left:' + self.nzOffset.left + 'px;top:' + self.nzOffset.top + 'px;height:' + self.nzHeight + 'px;width:' + self.nzWidth + 'px;z-index:'+self.options.z_index+'"></div>');
             $(self.options.zoomContainerAppendTo).append(self.zoomContainer);
 
 
@@ -1875,6 +1875,7 @@ if (typeof Object.create !== 'function') {
         zoomWindowPosition: 1,
         zoomWindowWidth: 400,
         zoomEnabled: true, //false disables zoomwindow from showing
+        z_index: 999
     };
 
 })(jQuery, window, document);

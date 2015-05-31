@@ -172,6 +172,30 @@
 
         <hr/>
 
+        <h1>Zoom in Modal</h1>
+        <button>Launch Modal</button>
+        <div class="ui modal" id="zoom_modal">
+            <img id="zoom_01" src='images/small/image1.jpg' data-zoom-image="images/large/image1.jpg"/>
+        </div>
+        <script>
+            $("button").click(function(){
+                $(".ui.modal")
+                    .modal({
+                        onShow: function() {
+                            $('#zoom_01').ezPlus({
+                                z_index: 1004 //semantic-ui default modal's z-index is 1001
+                            });
+                        },
+                        onHide: function() {
+                            //destroy or remove elevateZoom object here.
+                            $(".zoomContainer").remove();
+                        }
+                    })
+                    .modal('show');
+            });
+        </script>
+        <hr/>
+
         <h1>Screen-size sesitivity</h1>
 
         <p>
