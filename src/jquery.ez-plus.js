@@ -764,7 +764,7 @@ if (typeof Object.create !== 'function') {
                         self.changeBgSize = false;
                     }
 
-                    self.setWindowPostition(e);
+                    self.setWindowPosition(e);
                 }
                 //if tint zoom
                 if (self.options.tint && self.options.zoomType != "inner") {
@@ -773,10 +773,10 @@ if (typeof Object.create !== 'function') {
                 }
                 //set the css background position
                 if (self.options.zoomType == "window") {
-                    self.setWindowPostition(e);
+                    self.setWindowPosition(e);
                 }
                 if (self.options.zoomType == "inner") {
-                    self.setWindowPostition(e);
+                    self.setWindowPosition(e);
                 }
                 if (self.options.showLens) {
 
@@ -873,9 +873,9 @@ if (typeof Object.create !== 'function') {
                 }
             }
         },
-        setLensPostition: function (e) {
+        setLensPosition: function (e) {
         },
-        setWindowPostition: function (e) {
+        setWindowPosition: function (e) {
             //return obj.slice( 0, count );
             var self = this;
 
