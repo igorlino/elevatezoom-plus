@@ -444,14 +444,12 @@ if (typeof Object.create !== 'function') {
 
                 if (self.overWindow == false) {
                     self.setElements("show");
-                    self.$elem.css("opacity", "0");
                 }
 
 
             }).mouseleave(function () {
                 if (!self.scrollLock) {
                     self.setElements("hide");
-                    self.$elem.css("opacity", "1");
                 }
             });
             //end ove image
