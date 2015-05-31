@@ -23,6 +23,7 @@ if (typeof Object.create !== 'function') {
     var EZP = {
         init: function (options, elem) {
             var self = this;
+            var $galleries;
 
             self.elem = elem;
             self.$elem = $(elem);
@@ -54,15 +55,16 @@ if (typeof Object.create !== 'function') {
 
 
             //Create the image swap from the gallery
-            $('#' + self.options.gallery + ' a').click(function (e) {
+            $galleries = $(self.options.gallery ? ('#' + self.options.gallery) : self.options.gallerySelector);
+            $galleries.on('click.zoom', self.options.galleryItem, function(e) {
 
                 //Set a class on the currently active gallery image
                 if (self.options.galleryActiveClass) {
-                    $('#' + self.options.gallery + ' a').removeClass(self.options.galleryActiveClass);
+                    $(self.options.galleryItem, $galleries).removeClass(self.options.galleryActiveClass);
                     $(this).addClass(self.options.galleryActiveClass);
                 }
                 //stop any link on the a tag from working
-                e.preventDefault();
+                if (this.tagName === 'A') e.preventDefault();
 
                 //call the swap image function
                 if ($(this).data("zoom-image")) {
@@ -72,7 +74,7 @@ if (typeof Object.create !== 'function') {
                     self.zoomImagePre = $(this).data("image");
                 }
                 self.swaptheimage($(this).data("image"), self.zoomImagePre);
-                return false;
+                if (this.tagName === 'A') return false;
             });
         },
         refresh: function (length) {
@@ -1830,6 +1832,8 @@ if (typeof Object.create !== 'function') {
         enabled: true,
         gallery: false,
         galleryActiveClass: "zoomGalleryActive",
+        gallerySelector: false,
+        galleryItem: 'a',
         imageCrossfade: false,
         lensBorderColour: "#000",
         lensBorderSize: 1,
