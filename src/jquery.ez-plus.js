@@ -525,18 +525,19 @@ if (typeof Object.create !== 'function') {
                     else {
                         //scrolling down
 
+                        //Check if it has to maintain original zoom window aspect ratio or not
+                        if ((!self.fullheight && !self.fullwidth) || !self.options.mantainZoomAspectRatio) {
+                            if (self.options.maxZoomLevel) {
+                                if (self.currentZoomLevel <= self.options.maxZoomLevel) {
+                                    self.changeZoomLevel(parseFloat(self.currentZoomLevel) + self.options.scrollZoomIncrement);
+                                }
+                            }
+                            else {
+                                //andy
 
-                        if (self.options.maxZoomLevel) {
-                            if (self.currentZoomLevel <= self.options.maxZoomLevel) {
                                 self.changeZoomLevel(parseFloat(self.currentZoomLevel) + self.options.scrollZoomIncrement);
                             }
                         }
-                        else {
-                            //andy
-
-                            self.changeZoomLevel(parseFloat(self.currentZoomLevel) + self.options.scrollZoomIncrement);
-                        }
-
                     }
                     return false;
                 });
@@ -1832,14 +1833,15 @@ if (typeof Object.create !== 'function') {
         lensSize: 200,
         lenszoom: false,
         loadingIcon: false, //http://www.example.com/spinner.gif
+        mantainZoomAspectRatio: false, //This change will allow to decide if you want to decrease zoom of one of the dimensions once the other reached it's top value, or keep the aspect ratio, default behaviour still being as always, allow to continue zooming out, so it keeps retrocompatibility.
         maxZoomLevel: false,
         minZoomLevel: false,
         onComplete: $.noop,
+        onImageClick: $.noop,
         onImageSwap: $.noop,
         onImageSwapComplete: $.noop,
         onShow: $.noop,
         onZoomedImageLoaded: $.noop,
-        onImageClick: $.noop,
         preloading: 1, //by default, load all the images, if 0, then only load images after activated (PLACEHOLDER FOR NEXT VERSION)
         respond: [],
         responsive: true,
