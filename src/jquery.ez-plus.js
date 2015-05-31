@@ -1815,7 +1815,7 @@ if (typeof Object.create !== 'function') {
         constrainSize: false,  //in pixels the dimensions you want to constrain on
         constrainType: false,  //width or height
         containLensZoom: false,
-        cursor: "default", // user should set to what they want the cursor as, if they have set a click function
+        cursor: "inherit", // user should set to what they want the cursor as, if they have set a click function
         debug: false,
         easing: false,
         easingAmount: 12,
