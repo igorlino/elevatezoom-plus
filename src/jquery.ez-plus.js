@@ -245,6 +245,8 @@ if (typeof Object.create !== 'function') {
             //self.zoomContainer = $('<div/>').addClass('zoomContainer').css({"position":"relative", "height":self.nzHeight, "width":self.nzWidth});
 
             self.zoomContainer = $('<div class="zoomContainer" style="-webkit-transform: translateZ(0);position:absolute;left:' + self.nzOffset.left + 'px;top:' + self.nzOffset.top + 'px;height:' + self.nzHeight + 'px;width:' + self.nzWidth + 'px;"></div>');
+            //erase already created zoomContainer to not pollute the DOM
+            $(self.options.zoomContainerAppendTo).children('.zoomContainer').remove();
             $(self.options.zoomContainerAppendTo).append(self.zoomContainer);
 
 
@@ -1428,7 +1430,7 @@ if (typeof Object.create !== 'function') {
                     lensHeight = String((self.options.zoomWindowHeight / self.heightRatio))
                 }
 
-                if (self.options.zoomWindowWidth < self.options.zoomWindowWidth) {
+                if (self.nzWidth < self.options.zoomWindowWidth) {
                     lensWidth = self.nzWidth;
                 }
                 else {
