@@ -176,7 +176,7 @@ if (typeof Object.create !== 'function') {
 
                 // adjust images less than the window height
 
-                if (self.nzHeight < self.options.zoomWindowWidth / self.widthRatio) {
+                if (self.nzHeight < self.options.zoomWindowHeight / self.heightRatio) {
                     lensHeight = self.nzHeight;
                 }
                 else {
@@ -1420,7 +1420,7 @@ if (typeof Object.create !== 'function') {
             // adjust images less than the window height
             if (self.options.zoomType == "window") {
 
-                if (self.nzHeight < self.options.zoomWindowWidth / self.widthRatio) {
+                if (self.nzHeight < self.options.zoomWindowHeight / self.heightRatio) {
                     lensHeight = self.nzHeight;
 
                 }
