@@ -450,6 +450,7 @@ if (typeof Object.create !== 'function') {
             }).mouseleave(function () {
                 if (!self.scrollLock) {
                     self.setElements("hide");
+                    self.options.onDestroy(self.$elem);
                 }
             });
             //end ove image
@@ -1844,6 +1845,7 @@ if (typeof Object.create !== 'function') {
         maxZoomLevel: false,
         minZoomLevel: false,
         onComplete: $.noop,
+        onDestroy: $.noop,
         onImageClick: $.noop,
         onImageSwap: $.noop,
         onImageSwapComplete: $.noop,
