@@ -763,7 +763,7 @@ if (typeof Object.create !== 'function') {
         showHideWindow: function (change) {
             var self = this;
             if (change === 'show') {
-                if (!self.isWindowActive) {
+                if (!self.isWindowActive && self.zoomWindow) {
                     self.options.onShow(self);
                     if (self.options.zoomWindowFadeIn) {
                         self.zoomWindow.stop(true, true, false).fadeIn(self.options.zoomWindowFadeIn);
@@ -796,7 +796,7 @@ if (typeof Object.create !== 'function') {
             var self = this;
             if (change === 'show') {
                 if (!self.isLensActive) {
-                    if (self.options.lensFadeIn) {
+                    if (self.options.lensFadeIn && self.zoomLens) {
                         self.zoomLens.stop(true, true, false).fadeIn(self.options.lensFadeIn);
                     }
                     else {
@@ -820,7 +820,7 @@ if (typeof Object.create !== 'function') {
         showHideTint: function (change) {
             var self = this;
             if (change === 'show') {
-                if (!self.isTintActive) {
+                if (!self.isTintActive && self.zoomTint) {
 
                     if (self.options.zoomTintFadeIn) {
                         self.zoomTint.css('opacity', self.options.tintOpacity).animate().stop(true, true).fadeIn('slow');
