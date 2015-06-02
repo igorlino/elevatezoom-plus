@@ -1,3 +1,13 @@
+<a name="1.1.2"></a>
+
+# 1.1.2 (2015-01-June)
+
+- Corrected hundreds of JSHint errors/warnings
+- Added JSCS code style validation.
+- Corrected hundreds of JSCS warnings.
+- Fixed unwanted global variables.
+- Fixed closeAll method not working at all.
+
 <a name="1.1.1"></a>
 
 # 1.1.1 (2015-01-June)

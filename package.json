@@ -1,7 +1,7 @@
 {
     "name": "ez-plus",
     "title": "EZ Plus",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "A jQuery image zoom plug-in, with tints, easing and gallery integration.",
     "keywords": [
         "zoom",
@@ -39,7 +39,8 @@
         "grunt-contrib-concat": "^0.5.1",
         "grunt-contrib-jshint": "^0.11.2",
         "grunt-contrib-uglify": "^0.9.1",
-        "grunt-contrib-watch": "^0.6.1"
+        "grunt-contrib-watch": "^0.6.1",
+        "grunt-jscs": "^1.8.0"
     },
     "scripts": {
         "test": "grunt travis --verbose"
