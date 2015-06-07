@@ -115,6 +115,7 @@ if (typeof Object.create !== 'function') {
             return;
         },
         setImageSource: function (image, src) {
+            //sets an image's source.
             image.src = src;
         },
         startZoom: function () {
