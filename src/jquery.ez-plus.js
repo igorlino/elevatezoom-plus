@@ -861,7 +861,7 @@ if (typeof Object.create !== 'function') {
 
                 switch (self.options.zoomWindowPosition) {
                     case 1: //done
-                        self.windowOffsetTop = (self.options.zoomWindowOffety);//DONE - 1
+                        self.windowOffsetTop = (self.options.zoomWindowOffsety);//DONE - 1
                         self.windowOffsetLeft = (+self.nzWidth); //DONE 1, 2, 3, 4, 16
                         break;
                     case 2:
@@ -920,7 +920,7 @@ if (typeof Object.create !== 'function') {
                         }
                         break;
                     case 11:
-                        self.windowOffsetTop = (self.options.zoomWindowOffety);
+                        self.windowOffsetTop = (self.options.zoomWindowOffsety);
                         self.windowOffsetLeft = (self.zoomWindow.width() + (self.options.borderSize * 2)) * (-1);  //DONE 8,9,10,11,12
                         break;
                     case 12: //done
@@ -950,7 +950,7 @@ if (typeof Object.create !== 'function') {
                         self.windowOffsetLeft = (self.nzWidth); //DONE 1, 2, 3, 4, 16
                         break;
                     default: //done
-                        self.windowOffsetTop = (self.options.zoomWindowOffety);//DONE - 1
+                        self.windowOffsetTop = (self.options.zoomWindowOffsety);//DONE - 1
                         self.windowOffsetLeft = (self.nzWidth); //DONE 1, 2, 3, 4, 16
                 }
             } //end isNAN
@@ -966,8 +966,8 @@ if (typeof Object.create !== 'function') {
 
             }
             self.isWindowSet = true;
-            self.windowOffsetTop = self.windowOffsetTop + self.options.zoomWindowOffety;
-            self.windowOffsetLeft = self.windowOffsetLeft + self.options.zoomWindowOffetx;
+            self.windowOffsetTop = self.windowOffsetTop + self.options.zoomWindowOffsety;
+            self.windowOffsetLeft = self.windowOffsetLeft + self.options.zoomWindowOffsetx;
 
             self.zoomWindow.css({
                 top: self.windowOffsetTop,
@@ -1835,8 +1835,8 @@ if (typeof Object.create !== 'function') {
         zoomWindowFadeIn: false,
         zoomWindowFadeOut: false,
         zoomWindowHeight: 400,
-        zoomWindowOffetx: 0,
-        zoomWindowOffety: 0,
+        zoomWindowOffsetx: 0,
+        zoomWindowOffsety: 0,
         zoomWindowPosition: 1,
         zoomWindowWidth: 400,
         zoomEnabled: true, //false disables zoomwindow from showing
