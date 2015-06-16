@@ -187,6 +187,7 @@
 
         </p>
 
+        <div style="clear: both"/>
         <p>
             <img id="responsive" src="https://raw.githubusercontent.com/igorlino/elevatezoom-plus/master/demo/images/small/image1.jpg" data-zoom-image="https://raw.githubusercontent.com/igorlino/elevatezoom-plus/master/demo/images/large/image1.jpg"/>
         </p>
@@ -204,11 +205,15 @@
                     respond: [
                         {
                             range: '600-799',
-                            tintColour: '#F00'
+                            tintColour: '#F00',
+                            zoomWindowHeight: 100,
+                            zoomWindowWidth: 100
                         },
                         {
                             range: '800-1199',
-                            tintColour: '#00F'
+                            tintColour: '#00F',
+                            zoomWindowHeight: 200,
+                            zoomWindowWidth: 200
                         },
                         {
                             range: '100-599',
