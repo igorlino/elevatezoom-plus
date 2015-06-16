@@ -21,6 +21,67 @@
             padding: 40px 15px;
             text-align: center;
         }
+
+        /*Default*/
+        #responsive_img {
+            width:800px ;
+        }
+
+        .responsive_default {
+            display:inline-block;
+            color: #159957;
+        }
+        .responsive_100, .responsive_600, .responsive_800 {
+            display:none;
+            color: #159957;
+        }
+
+        /*Target devices 100-599px*/
+        @media only screen and  (min-width: 100px) and (max-width: 599px) {
+
+            #responsive_img {
+                width:300px ;
+            }
+
+            .responsive_100 {
+                display:inline-block;
+            }
+            .responsive_default {
+                display:none;
+            }
+
+        }
+        /*Target devices 600-799 width*/
+        @media only screen and (min-width: 600px) and (max-width: 799px) {
+
+            #responsive_img {
+                width:450px;
+            }
+
+            .responsive_600 {
+                display:inline-block;
+            }
+            .responsive_default {
+                display:none;
+            }
+        }
+
+        /*Target devices 800-1199px*/
+        @media only screen and  (min-width: 800px) and (max-width: 1199px) {
+
+            #responsive_img {
+                width:600px ;
+            }
+
+            .responsive_800 {
+                display:inline-block;
+            }
+            .responsive_default {
+                display:none;
+            }
+
+        }
+
     </style>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -175,52 +236,73 @@
         <h1>Responsive - Screen-size sensitivity</h1>
 
         <p>
-            Not truly responsive yet, since it goes based off the screen width when the object is initialized.
-            The example below defines 'respond' with 4 ranges.
+            The example below defines 3 responsive CSS media queries and also in the 'respond' with 4 ranges.
         <ol style="float:left;text-align: left">
-            <li>Default - tint color is #0F0(green)</li>
-            <li>[600px,799px] - tint color is #F00(red)</li>
-            <li>[800px,1199px] - tint color is #00F (purple)</li>
-            <li>[100px,599px] - tint color is disabled </li>
+            <li>Default - tint color is #0F0(green) <span class="responsive_default">ACTIVE</span></li>
+            <li>[800px,1199px] - tint color is #00F (purple) <span class="responsive_800">ACTIVE</span></li>
+            <li>[600px,799px] - tint color is #F00(red) <span class="responsive_600">ACTIVE</span></li>
+            <li>[100px,599px] - tint color is disabled <span class="responsive_100">ACTIVE</span></li>
         </ol>
 
 
         </p>
+        <p>
+            <span id="status"></span>
+            <span id="imgWidth"></span>
+        </p>
 
         <div style="clear: both"/>
         <p>
-            <img id="responsive" src="https://raw.githubusercontent.com/igorlino/elevatezoom-plus/master/demo/images/small/image1.jpg" data-zoom-image="https://raw.githubusercontent.com/igorlino/elevatezoom-plus/master/demo/images/large/image1.jpg"/>
+            <img id="responsive_img" src="https://raw.githubusercontent.com/igorlino/elevatezoom-plus/master/demo/images/small/image1.jpg" data-zoom-image="https://raw.githubusercontent.com/igorlino/elevatezoom-plus/master/demo/images/large/image1.jpg"/>
         </p>
 
         <script>
             $(function () {
-                $("#responsive").ezPlus({
-                    responsive : true,
-                    scrollZoom : false,
-                    showLens: true,
 
-                    tint: true,
-                    tintColour: '#0F0',
-                    tintOpacity: 0.5,
-                    respond: [
-                        {
-                            range: '600-799',
-                            tintColour: '#F00',
-                            zoomWindowHeight: 100,
-                            zoomWindowWidth: 100
-                        },
-                        {
-                            range: '800-1199',
-                            tintColour: '#00F',
-                            zoomWindowHeight: 200,
-                            zoomWindowWidth: 200
-                        },
-                        {
-                            range: '100-599',
-                            enabled: false
-                        }
-                    ]
+                initEZPlus();
+
+                //Triggered when window width is changed.
+                $( window ).on( "resize", function() {
+                    var windowWidth = $( window ).width(), // get window width
+                            imgWidth = $( "#responsive_img").width(); // get image width
+                    //Init elevateZoom
+                    initEZPlus();
+                    //display status
+                    $( "#status" ).html("Status: Window resized!.");
+                    //display image and window width
+                    $( "#imgWidth" ).html("Image width: " + imgWidth + "px" + "<br />" + "Window width: " + windowWidth + "px");
                 });
+
+                function initEZPlus() {
+                    $("#responsive_img").ezPlus({
+                        responsive : true,
+                        scrollZoom : false,
+                        showLens: true,
+
+                        tint: true,
+                        tintColour: '#0F0',
+                        tintOpacity: 0.5,
+                        respond: [
+                            {
+                                range: '600-799',
+                                tintColour: '#F00',
+                                zoomWindowHeight: 100,
+                                zoomWindowWidth: 100
+                            },
+                            {
+                                range: '800-1199',
+                                tintColour: '#00F',
+                                zoomWindowHeight: 200,
+                                zoomWindowWidth: 200
+                            },
+                            {
+                                range: '100-599',
+                                enabled: false,
+                                showLens: false
+                            }
+                        ]
+                    });
+                }
             })
         </script>
 
