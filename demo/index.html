@@ -196,10 +196,19 @@
         </script>
         <hr/>
 
-        <h1>Screen-size sesitivity</h1>
+        <h1>Responsive - Screen-size sensitivity</h1>
 
         <p>
-            Not truly responsive yet, since it goes based off the screen width when the object is initialized
+            Not truly responsive yet, since it goes based off the screen width when the object is initialized.
+            The example below defines 'respond' with 4 ranges.
+        <ol style="float:left;text-align: left">
+        <li>Default - tint color is #0F0(green)</li>
+        <li>[600px,799px] - tint color is #F00(red)</li>
+        <li>[800px,1199px] - tint color is #00F (purple)</li>
+        <li>[100px,599px] - tint color is disabled </li>
+    </ol>
+
+
         </p>
 
         <p>
@@ -209,6 +218,10 @@
         <script>
             $(function () {
                 $("#responsive").ezPlus({
+                    responsive : true,
+                    scrollZoom : false,
+                    showLens: true,
+
                     tint: true,
                     tintColour: '#0F0',
                     tintOpacity: 0.5,
