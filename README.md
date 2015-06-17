@@ -1,4 +1,4 @@
-[jQuery Zoom Plugin](http://igorlino.github.io/elevatezoom-plus/)
+[jQuery ElevateZoom Plus Plugin](http://igorlino.github.io/elevatezoom-plus/)
 ================================
 
 [EZ Plus](http://igorlino.github.io/elevatezoom-plus/) is an up-to-date jQuery image zoom plug-in based on [EZ](https://github.com/elevateweb/elevatezoom)
@@ -8,6 +8,7 @@
 - Image Zooming
 - Easing
 - JQuery plug-in
+- AngularJS directive also available [here](https://github.com/igorlino/angular-elevatezoom-plus)
 
 ## Installation
 
