@@ -7,7 +7,7 @@
  */
 
 /*
- *	jQuery ezPlus 1.1.5
+ *	jQuery ezPlus 1.1.6
  *	Demo's and documentation:
  *	http://igorlino.github.io/elevatezoom-plus/
  *
@@ -763,6 +763,19 @@ if (typeof Object.create !== 'function') {
                 }
 
             } //end else
+        },
+        showHideZoomContainer: function (change) {
+            var self = this;
+            if (change === 'show') {
+                if (self.zoomContainer) {
+                    self.zoomContainer.show();
+                }
+            }
+            if (change === 'hide') {
+                if (self.zoomContainer) {
+                    self.zoomContainer.hide();
+                }
+            }
         },
         showHideWindow: function (change) {
             var self = this;
