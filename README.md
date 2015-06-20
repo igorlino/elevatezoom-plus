@@ -12,16 +12,16 @@
 
 ## Installation
 
-Via [npm](https://www.npmjs.com/):
-
-```bash
-npm install elevatezoom-plus
-```
-
 Via [Bower](http://bower.io/):
 
 ```bash
-bower install elevatezoom-plus
+bower install ez-plus
+```
+
+Via [npm](https://www.npmjs.com/):
+
+```bash
+npm install ez-plus
 ```
 
 In a browser:
