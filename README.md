@@ -5,10 +5,15 @@
 
 ## Features
 
-- Image Zooming
-- Easing
+- Fully Customisable
+- Coloured Tints
+- [Fancybox-Plus](http://igorlino.github.io/fancybox-plus/) and [Colorbox](http://www.jacklmoore.com/colorbox/) Gallery Support
+- Variable zoom on mouse scroll
+- External Controls
+- Window Zoom, Lens Zoom and Inner Zoom
+- Free to use under MIT
 - JQuery plug-in
-- AngularJS directive also available [here](https://github.com/igorlino/angular-elevatezoom-plus)
+- AngularJS directive available: [angular-elevatezoom-plus](https://github.com/igorlino/angular-elevatezoom-plus)
 
 ## Installation
 

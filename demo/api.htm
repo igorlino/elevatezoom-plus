@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="imagetoolbar" content="no"/>
+    <title>jQuery ElevateZoom-Plus - An image zoom plugin</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdn.rawgit.com/jquery/jquery-mousewheel/3.1.12/jquery.mousewheel.js"></script>
+
+    <script type="text/javascript"
+            src="https://cdn.rawgit.com/igorlino/fancybox-plus/1.3.6/src/jquery.fancybox-plus.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.rawgit.com/igorlino/fancybox-plus/1.3.6/css/jquery.fancybox-plus.css" media="screen"/>
+
+    <!--
+    <script type="text/javascript" src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/src/jquery.ez-plus.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/css/jquery.ez-plus.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/css/style.css" media="screen" />
+    <script type="text/javascript" src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/js/web.js?m=20100203"></script>
+    -->
+
+    <script type="text/javascript" src="../src/jquery.ez-plus.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/jquery.ez-plus.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen"/>
+    <script type="text/javascript" src="js/web.js?m=20100203"></script>
+
+    <!--[if IE 6]>
+    <script src="https://cdn.rawgit.com/igorlino/DD_belatedPNG/0.0.8a/DD_belatedPNG_0.0.8a.js"></script>
+
+    <script>
+        DD_belatedPNG.fix('.png_bg');
+    </script>
+    <![endif]-->
+    <script src="https://cdn.rawgit.com/sorccu/cufon/1.09i/js/cufon.js" type="text/javascript"></script>
+    <script src="https://cdn.rawgit.com/igorlino/fancybox-plus/1.3.6/demo/js/Museo_300_300.font.js"
+            type="text/javascript"></script>
+    <script type="text/javascript">
+        Cufon.replace('h1', {color: '#ff6347'});
+    </script>
+</head>
+<body>
+<div id="page">
+    <div id="header">
+        <h1><a href="https://github.com/igorlino/elevatezoom-plus">elevateZoom-<b>Plus</b></a></h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a class="active" href="api.htm">API &amp; Options</a></li>
+            <li><a href="examples.htm">Examples</a></li>
+            <li><a href="faq.htm">FAQ</a></li>
+        </ul>
+    </div>
+
+    <div id="col_wrap">
+        <div id="col_left" class="zoom-wrapper">
+
+            <!-- OPTIONS-->
+            <h1>Configuration Options</h1>
+
+            <p>These are the available options for the zoom</p>
+
+            <p>See some examples of usage on our <a href="examples.htm">examples page</a>
+            </p>
+
+            <div class="transparent_top p1"></div>
+            <div class="table transparent p1">
+                <table width="100%" class="options" cellpadding="0" cellspacing="0">
+                    <thead>
+
+
+                    <tr>
+                        <th width="131">Option</th>
+                        <th width="180">Default Value</th>
+                        <th>Desciption</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>responsive</td>
+                        <td>false</td>
+                        <td>Set to true to activate responsivenes. If you have a theme which changes size, or tablets which
+                            change orientation this is needed to be on. Possible Values: <code>"True"</code>,
+                            <code>"False"</code></td>
+                    </tr>
+                    <tr>
+                        <td>scrollZoom</td>
+                        <td>false</td>
+                        <td>Set to true to activate zoom on mouse scroll. Possible Values: <code>"True"</code>, <code>"False"</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>imageCrossfade</td>
+                        <td>false</td>
+                        <td>Set to true to activate simultaneous crossfade of images on gallery change. Possible Values:
+                            <code>"True"</code>, <code>"False"</code></td>
+                    </tr>
+                    <tr>
+                        <td>loadingIcon</td>
+                        <td>false</td>
+                        <td>Set to the url of the spinner icon to activate, e.g, http://www.example.com/spinner.gif.
+                            Possible Values: <code>"True"</code>, <code>"False"</code></td>
+                    </tr>
+                    <tr>
+                        <td>easing</td>
+                        <td>false</td>
+                        <td>Set to true to activate easing. Possible Values: <code>"True"</code>, <code>"False"</code></td>
+                    </tr>
+                    <tr>
+                        <td>easingType</td>
+                        <td>zoomdefault</td>
+                        <td><p>default easing type is easeOutExpo, (t==d) ? b+c : c * (-Math.pow(2, -10 * t/d) + 1) + b<br>
+                            Extend jquery with other easing types before initiating the plugin and pass the easing type as a
+                            string value.
+                        </p></td>
+                    </tr>
+                    <tr>
+                        <td>easingDuration</td>
+                        <td>2000</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>lensSize</td>
+                        <td>200</td>
+                        <td>used when zoomType set to lens, when zoom type is set to window, then the lens size is auto
+                            calculated
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>zoomWindowWidth</td>
+                        <td>400</td>
+                        <td>Width of the zoomWindow (Note: zoomType must be &quot;window&quot;)</td>
+                    </tr>
+                    <tr>
+                        <td>zoomWindowHeight</td>
+                        <td>400</td>
+                        <td>Height of the zoomWindow (Note: zoomType must be &quot;window&quot;)</td>
+                    </tr>
+                    <tr>
+                        <td>zoomWindowOffetx</td>
+                        <td>0</td>
+                        <td>x-axis offset of the zoom window</td>
+                    </tr>
+                    <tr>
+                        <td>zoomWindowOffety</td>
+                        <td>0</td>
+                        <td>y-axis offset of the zoom window</td>
+                    </tr>
+                    <tr>
+                        <td>zoomWindowPosition</td>
+                        <td>1</td>
+                        <td>Once positioned, use <code>zoomWindowOffsetx</code> and <code>zoomWindowOffsety</code> to adjust<br/>
+                            Possible values: 1-16
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>lensFadeIn</td>
+                        <td>false</td>
+                        <td>Set as a number e.g 200 for speed of Lens fadeIn</td>
+                    </tr>
+                    <tr>
+                        <td>lensFadeOut</td>
+                        <td>false</td>
+                        <td>Set as a number e.g 200 for speed of Lens fadeOut</td>
+                    </tr>
+                    <tr>
+                        <td>zoomWindowFadeIn</td>
+                        <td>false</td>
+                        <td>Set as a number e.g 200 for speed of Window fadeIn</td>
+                    </tr>
+                    <tr>
+                        <td>zoomWindowFadeOut</td>
+                        <td>false</td>
+                        <td>Set as a number e.g 200 for speed of Window fadeOut</td>
+                    </tr>
+                    <tr>
+                        <td>zoomTintFadeIn</td>
+                        <td>false</td>
+                        <td>Set as a number e.g 200 for speed of Tint fadeIn</td>
+                    </tr>
+                    <tr>
+                        <td>zoomTintFadeOut</td>
+                        <td>false</td>
+                        <td>Set as a number e.g 200 for speed of Tint fadeOut</td>
+                    </tr>
+                    <tr>
+                        <td>borderSize</td>
+                        <td>4</td>
+                        <td>Border Size of the ZoomBox - Must be set here as border taken into account for plugin
+                            calculations
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>zoomLens</td>
+                        <td>true</td>
+                        <td>set to false to hide the Lens</td>
+                    </tr>
+                    <tr>
+                        <td>borderColour</td>
+                        <td>#888</td>
+                        <td>Border Colour</td>
+                    </tr>
+                    <tr>
+                        <td>lensBorder</td>
+                        <td>1</td>
+                        <td>Width in pixels of the lens border</td>
+                    </tr>
+                    <tr>
+                        <td>lensShape</td>
+                        <td>square</td>
+                        <td>can also be round (note that only modern browsers support round, will default to square in older
+                            browsers)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>zoomType</td>
+                        <td>window</td>
+                        <td>Possible Values: Lens, Window, Inner</td>
+                    </tr>
+                    <tr>
+                        <td>containLensZoom</td>
+                        <td>false</td>
+                        <td>for use with the Lens Zoom Type. This makes sure the lens does not fall outside the outside of
+                            the image
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>lensColour</td>
+                        <td>white</td>
+                        <td>colour of the lens background</td>
+                    </tr>
+                    <tr>
+                        <td>lensOpacity</td>
+                        <td><p>0.4</p></td>
+                        <td>used in combination with lensColour to make the lens see through. When using tint, this is
+                            overrided to 0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>lenszoom</td>
+                        <td>false</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>tint</td>
+                        <td>false</td>
+                        <td>enable a tint overlay, other options: true</td>
+                    </tr>
+                    <tr>
+                        <td>tintColour</td>
+                        <td>#333</td>
+                        <td>colour of the tint, can be #hex, word (red, blue), or rgb(x, x, x)</td>
+                    </tr>
+                    <tr>
+                        <td>tintOpacity</td>
+                        <td>0.4</td>
+                        <td>opacity of the tint</td>
+                    </tr>
+                    <tr>
+                        <td>gallery</td>
+                        <td>null</td>
+                        <td>This assigns a set of gallery links to the zoom image</td>
+                    </tr>
+                    <tr>
+                        <td>cursor</td>
+                        <td>default</td>
+                        <td>The default cursor is usually the arrow, if using a lightbox, then set the cursor to pointer so
+                            it looks clickable - Options are default, cursor, crosshair
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="transparent_bottom"></div>
+            <p>&nbsp;</p>
+
+            <!-- END OPTIONS-->
+
+            <div class="clear"></div>
+        </div>
+
+        <div id="footer">
+            <p>Contact: info <span>[at]</span> <a href="http://igorlino.github.io/elevatezoom-plus/">issues</a>
+                &nbsp;&nbsp; /please, don`t send emails for help, use <a
+                    href="https://github.com/igorlino/elevatezoom-plus/issues">issues</a> instead</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
