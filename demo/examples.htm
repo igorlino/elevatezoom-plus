@@ -357,260 +357,6 @@
 
             <div style="margin-left:10px;float:left; width:795px;">
 
-                <h1>Jquery Image Zoom Plugin Examples</h1>
-
-                <br>
-
-                <div class="zoom-wrapper">
-                    <div class="zoom-left">
-                        <img style="border:1px solid #e8e8e6;" id="zoom_01"
-                             src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/small/image1.jpg"
-                             data-zoom-image="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/large/image1.jpg"
-                             width="411"/>
-                    </div>
-                    <div class="zoom-right">
-                        <h3><a name="basic-zoom">Basic Zoom</a></h3>
-
-                        <p>The zoom works with either one or two images. Two images are recommended for the zoom to work
-                            the
-                            best.
-                            Most of the settings for the zoom box can be overridden.
-                        </p>
-                        <a href="#" rel="view_script_01" class="view_source">SHOW THE CODE</a>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <script type="text/javascript">
-                        $(document).ready(function () {
-                            $("#zoom_01").ezPlus();
-                        });
-                    </script>
-                    <div class="scripts view_script_01">
-                        <h6>HTML</h6>
-                    <pre><code class="language-markup">&lt;img id=&quot;zoom_01&quot; src=&quot;small/image1.png&quot;
-                        data-zoom-image=&quot;large/image1.jpg&quot;/&gt;</code></pre>
-                        <h6>JAVASCRIPT</h6>
-                        <pre><code class="language-javascript">$(&quot;#zoom_01&quot;).ezPlus();</code></pre>
-                    </div>
-                </div>
-                <hr class="style-two">
-
-                <script type="text/javascript">
-                    $(document).ready(function () {
-
-                    });
-                </script>
-                <div class="zoom-wrapper">
-                    <div class="zoom-left">
-                        <img style="border:1px solid #e8e8e6;" id="zoom_02"
-                             src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/small/image2.jpg"
-                             data-zoom-image="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/large/image2.jpg"
-                             width="411"/>
-                    </div>
-                    <div class="zoom-right">
-                        <h3><a name="tints">Tints</a></h3>
-
-                        <p>
-                            You can easily set tints for the zoom, you can set the colour and opacity of the tint
-                            overlay to
-                            be any value
-
-                        <div style="width:100px;float:left;">
-                            Red <br>
-                            <img style="border:1px solid #e8e8e6;" id="zoom_02a"
-                                 src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/small/image2.jpg"
-                                 data-zoom-image="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/large/image2.jpg"
-                                 width="100"/>
-                        </div>
-                        <div style="margin-left:10px;width:100px;float:left;">
-                            black<br>
-                            <img style="border:1px solid #e8e8e6;" id="zoom_02b"
-                                 src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/small/image2.jpg"
-                                 data-zoom-image="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/large/image2.jpg"
-                                 width="100"/>
-                        </div>
-                        <div style="margin-left:10px;width:100px;float:left;">
-                            Green <br>
-                            <img style="border:1px solid #e8e8e6;" id="zoom_02c"
-                                 src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/small/image2.jpg"
-                                 data-zoom-image="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/large/image2.jpg"
-                                 width="100"/>
-                        </div>
-                        </p>
-                        <a href="#" rel="view_script_02" class="view_source">SHOW THE CODE</a>
-
-                    </div>
-                    <div style="clear:both;"></div>
-                    <script type="text/javascript">
-                        $(document).ready(function () {
-                            $("#zoom_02").ezPlus({tint: true, tintColour: '#F90', tintOpacity: 0.5});
-                            $("#zoom_02a").ezPlus({
-                                tint: true,
-                                tintColour: 'red',
-                                tintOpacity: 0.5,
-                                zoomWindowPosition: 6
-                            });
-                            $("#zoom_02b").ezPlus({
-                                tint: true,
-                                tintColour: 'black',
-                                tintOpacity: 0.5,
-                                zoomWindowPosition: 6
-                            });
-                            $("#zoom_02c").ezPlus({
-                                tint: true,
-                                tintColour: 'green',
-                                tintOpacity: 0.5,
-                                zoomWindowPosition: 6
-                            });
-                        });
-                    </script>
-                    <div class="scripts view_script_02">
-                        <h6>HTML</h6>
-                    <pre><code class="language-markup">&lt;img id=&quot;zoom_02&quot; src=&quot;small/image1.png&quot;
-                        data-zoom-image=&quot;large/image1.jpg&quot;/&gt;</code></pre>
-                        <h6>JAVASCRIPT</h6>
-                    <pre><code class="language-javascript">$(&quot;#zoom_02&quot;).ezPlus({tint:true,
-                        tintColour:'#F90', tintOpacity:0.5});</code></pre>
-                    </div>
-                </div>
-                <hr class="style-two">
-                <style>
-                    #gallery_01 img {
-                        border: 2px solid white;
-                        width: 96px;
-                    }
-
-                    #gallery_09 img {
-                        border: 2px solid white;
-                        width: 96px;
-                    }
-
-                    .active img {
-                        border: 2px solid #333 !important;
-                    }
-
-                </style>
-
-                <div class="zoom-wrapper">
-                    <div class="zoom-left">
-                        <img style="border:1px solid #e8e8e6;" id="zoom_03"
-                             src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/small/image3.jpg"
-                             data-zoom-image="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/large/image3.jpg"
-                             width="411"/>
-
-                        <div id="gallery_01" style="width=" 500pxfloat:left;
-                        ">
-
-                        <a href="#" class="elevatezoom-gallery active" data-update=""
-                           data-image="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/small/image1.jpg"
-                           data-zoom-image="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/large/image1.jpg">
-                            <img src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/small/image1.jpg"
-                                 width="100"/></a>
-
-                        <a href="#" class="elevatezoom-gallery"
-                           data-image="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/small/image2.jpg"
-                           data-zoom-image="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/large/image2.jpg"
-                            ><img
-                            src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/small/image2.jpg"
-                            width="100"/></a>
-
-                        <a href="tester" class="elevatezoom-gallery"
-                           data-image="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/small/image3.jpg"
-                           data-zoom-image="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/large/image3.jpg">
-                            <img src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/small/image3.jpg"
-                                 width="100"/>
-                        </a>
-
-                        <a href="tester" class="elevatezoom-gallery"
-                           data-image="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/small/image4.jpg"
-                           data-zoom-image="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/large/image4.jpg"
-
-                           class="slide-content"
-                            ><img
-                            src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/small/image4.jpg"
-                            width="100"/></a>
-
-                    </div>
-                </div>
-                <div class="zoom-right">
-                    <h3><a name="gallery-lightbox">Gallery & Lightbox</a></h3>
-
-                    <p>
-                        You can attach a set of images to the zoom.
-                        Also you can pass a gallery to the lightbox
-                        <br>
-                        <strong>NEW: </strong>The imageCrossfade option will give a simultaneous fadein / fadeout effect
-                        on
-                        the zoom.
-                    </p>
-                    <a href="#" rel="view_script_03" class="view_source">SHOW THE CODE</a>
-                </div>
-                <div style="clear:both;"></div>
-                <script type="text/javascript">
-                    $(document).ready(function () {
-                        $("#zoom_03").ezPlus({
-                            gallery: 'gallery_01',
-                            cursor: 'pointer',
-                            galleryActiveClass: "active",
-                            imageCrossfade: true,
-                            loadingIcon: "http://www.elevateweb.co.uk/spinner.gif"
-                        });
-
-                        $("#zoom_03").bind("click", function (e) {
-                            var ez = $('#zoom_03').data('ezPlus');
-                            ez.closeAll(); //NEW: This function force hides the lens, tint and window
-                            $.fancyboxPlus(ez.getGalleryList());
-                            return false;
-                        });
-
-                    });
-
-                </script>
-
-                <div class="scripts view_script_03">
-                    <h6>HTML</h6>
-<pre><code class="language-markup">&lt;img id=&quot;img_01&quot; src=&quot;small/image1.jpg&quot; data-zoom-image=&quot;large/image1.jpg&quot;/&gt;
-
-    &lt;div id=&quot;gal1&quot;&gt;
-
-    &lt;a href=&quot;#&quot; data-image=&quot;small/image1.jpg&quot; data-zoom-image=&quot;large/image1.jpg&quot;&gt;
-    &lt;img id=&quot;img_01&quot; src=&quot;thumb/image1.jpg&quot; /&gt;
-    &lt;/a&gt;
-
-    &lt;a href=&quot;#&quot; data-image=&quot;small/image2.jpg&quot; data-zoom-image=&quot;large/image2.jpg&quot;&gt;
-    &lt;img id=&quot;img_01&quot; src=&quot;thumb/image2.jpg&quot; /&gt;
-    &lt;/a&gt;
-
-    &lt;a href=&quot;#&quot; data-image=&quot;small/image3.jpg&quot; data-zoom-image=&quot;large/image3.jpg&quot;&gt;
-    &lt;img id=&quot;img_01&quot; src=&quot;thumb/image3.jpg&quot; /&gt;
-    &lt;/a&gt;
-
-    &lt;a href=&quot;#&quot; data-image=&quot;small/image4.jpg&quot; data-zoom-image=&quot;large/image4.jpg&quot;&gt;
-    &lt;img id=&quot;img_01&quot; src=&quot;thumb/image4.jpg&quot; /&gt;
-    &lt;/a&gt;
-
-    &lt;/div&gt;</code></pre>
-                    <h6>JAVASCRIPT</h6>
-<pre><code class="language-javascript">//initiate the plugin and pass the id of the div containing gallery images
-    $(&quot;#zoom_03&quot;).ezPlus({gallery:'gallery_01', cursor: 'pointer', galleryActiveClass: 'active',
-    imageCrossfade: true, loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif'});
-
-    //pass the images to Fancybox
-    $(&quot;#zoom_03&quot;).bind(&quot;click&quot;, function(e) {
-    var ez = $('#zoom_03').data('ezPlus');
-    $.fancyboxPlus(ez.getGalleryList());
-    return false;
-    });</code></pre>
-                    <h6>CSS</h6>
-                    Note: Don't forget to put the class name you set on the default gallery image so it shows active
-                    from
-                    the start.
-<pre><code class="language-javascript">/*set a border on the images to prevent shifting*/
-    #gallery_01 img{border:2px solid white;}
-
-    /*Change the colour*/
-    .active img{border:2px solid #333 !important;}</code></pre>
-                </div>
-            </div>
             <hr class="style-two">
 
             <div style="background-color: white;
@@ -873,8 +619,7 @@ opacity: 0.4;" id="demo-container">
                          data-zoom-image="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/large/image1.jpg"
                          width="411"/>
 
-                    <div id="gallery_09" style="width=" 500pxfloat:left;
-                    ">
+                    <div id="gallery_09" style="width:500px;float:left;">
 
                     <a href="#" class="elevatezoom-gallery active" data-update=""
                        data-image="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/small/image1.jpg"
@@ -1200,8 +945,7 @@ opacity: 0.4;" id="demo-container">
                      data-zoom-image="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/large/image3.jpg"
                      width="411"/>
 
-                <div id="gallery_01f" style="width=" 500pxfloat:left;
-                ">
+                <div id="gallery_01f" style="width:500px;float:left;">
 
                 <a href="#" class="elevatezoom-gallery active" data-update=""
                    data-image="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/demo/images/small/image1.jpg"
@@ -1319,6 +1063,7 @@ opacity: 0.4;" id="demo-container">
     <p>Contact: info <span>[at]</span> <a href="http://igorlino.github.io/elevatezoom-plus/">issues</a>
         &nbsp;&nbsp; /please, don`t send emails for help, use <a
             href="https://github.com/igorlino/elevatezoom-plus/issues">issues</a> instead</p>
+</div>
 </div>
 </div>
 </div>
