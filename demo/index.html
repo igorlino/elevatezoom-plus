@@ -41,6 +41,7 @@
         Cufon.replace('h1', {color: '#ff6347'});
     </script>
 
+    <script type="text/javascript" src="https://cdn.rawgit.com/igorlino/snippet-helper/1.0.1/src/snippet-helper.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.8/demo/css/prism.css"/>
     <script type="text/javascript" src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.8/demo/js/prism.js"></script>
 </head>
@@ -142,10 +143,9 @@
 
             <div class="scripts view_script_05">
                 <h6>HTML</h6>
-                <pre><code class="language-markup">&lt;img id=&quot;zoom_04&quot; src=&quot;small/image1.png&quot;
-                    data-zoom-image=&quot;large/image1.jpg&quot;/&gt;</code></pre>
+                <pre><code id="code-ezp-01-html" ></code></pre>
                 <h6>JAVASCRIPT</h6>
-                <pre><code class="language-javascript">$(&quot;#zoom_04&quot;).ezPlus();</code></pre>
+                <pre><code id="code-ezp-01-js" ></code></pre>
             </div>
 
             <hr class="style-two">
@@ -158,8 +158,7 @@
                 <p>No need to download anything, you only need to include the jquery and elevatezoom plugin files into
                     your project as show below:</p>
 
-<pre><code class="language-javascript">&lt;script type=&quot;text/javascript&quot; src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script type=&quot;text/javascript&quot; src=&quot;https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/src/jquery.ez-plus.js&quot;&gt;&lt;/script&gt;</code></pre>
+<pre><code id="code-ezp-02-html"></code></pre>
 
 
                 <h1 style="font-size: 19px;margin-top:30px;margin-bottom:10px;">Include your Image</h1>
@@ -175,12 +174,13 @@
                 <p>Please ensure your small image is proportionally scaled down from the large image.
 
                 <p>
-                <pre><code class="language-markup">&lt;img id=&quot;zoom_01&quot; src=&quot;small/image1.png&quot;
-                    data-zoom-image=&quot;large/image1.jpg&quot;/&gt;</code></pre>
+
+                <pre><code id="code-ezp-03-html"></code></pre>
+
                 <h1 style="font-size: 19px;margin-top:30px;margin-bottom:10px;">Activate the zoom - Basic
                     Example</h1>
 
-                <pre><code class="language-javascript">$(&quot;#img_01&quot;).ezPlus();</code></pre>
+                <pre><code id="code-ezp-03-js"></code></pre>
 
                 <h1 style="font-size: 19px;margin-top:30px;margin-bottom:10px;">More Examples</h1>
 
@@ -203,6 +203,17 @@
 
             <div class="clear"></div>
         </div>
+        <script type="text/javascript">
+            var snippets = [
+                {code:"code-ezp-01", ext:"html,js"},
+                {code:"code-ezp-02", ext:"html"},
+                {code:"code-ezp-03", ext:"html,js"}
+            ];
+            $(document).ready(function () {
+                snippetHelper.loadSnippets(snippets);
+            });
+        </script>
+
 
         <div id="footer">
             <p>Contact: info <span>[at]</span> <a href="http://igorlino.github.io/elevatezoom-plus/">issues</a>
