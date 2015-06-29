@@ -13,5 +13,5 @@ $('#zoom_04c').ezPlus({
 });
 $('#zoom_04d').ezPlus({
     zoomWindowPosition: 1,
-    zoomWindowOffetx: 10
+    zoomWindowOffsetX: 10
 });
