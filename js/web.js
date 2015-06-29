@@ -60,7 +60,7 @@ $(document).ready(function () {
         imageCrossfade: true,
         zoomWindowWidth: 411,
         zoomWindowHeight: 274,
-        zoomWindowOffetx: 10,
+        zoomWindowOffsetX: 10,
         scrollZoom: true,
         cursor: 'pointer'
     });
