@@ -968,8 +968,12 @@ if (typeof Object.create !== 'function') {
                 }
             } //end isNAN
             else {
-                //WE CAN POSITION IN A CLASS - ASSUME THAT ANY STRING PASSED IS
-                self.externalContainer = $('#' + self.options.zoomWindowPosition);
+                // For BC purposes, treat passed element as ID if element not found
+                self.externalContainer = $(self.options.zoomWindowPosition);
+                if ( ! self.externalContainer.length) {
+                    self.externalContainer = $('#' + self.options.zoomWindowPosition);
+                }
+				
                 self.externalContainerWidth = self.externalContainer.width();
                 self.externalContainerHeight = self.externalContainer.height();
                 self.externalContainerOffset = self.externalContainer.offset();
