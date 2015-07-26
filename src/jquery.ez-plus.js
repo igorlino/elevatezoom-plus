@@ -7,7 +7,7 @@
  */
 
 /*
- *	jQuery ezPlus 1.1.10
+ *	jQuery ezPlus 1.1.11
  *	Demo's and documentation:
  *	http://igorlino.github.io/elevatezoom-plus/
  *
