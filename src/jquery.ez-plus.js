@@ -7,7 +7,7 @@
  */
 
 /*
- *	jQuery ezPlus 1.1.6
+ *	jQuery ezPlus 1.1.10
  *	Demo's and documentation:
  *	http://igorlino.github.io/elevatezoom-plus/
  *
@@ -973,7 +973,7 @@ if (typeof Object.create !== 'function') {
                 if ( ! self.externalContainer.length) {
                     self.externalContainer = $('#' + self.options.zoomWindowPosition);
                 }
-				
+
                 self.externalContainerWidth = self.externalContainer.width();
                 self.externalContainerHeight = self.externalContainer.height();
                 self.externalContainerOffset = self.externalContainer.offset();
@@ -1854,7 +1854,7 @@ if (typeof Object.create !== 'function') {
         zoomWindowHeight: 400,
         zoomWindowOffsetX: 0,
         zoomWindowOffsetY: 0,
-        zoomWindowPosition: 1,
+        zoomWindowPosition: 1, //Possible values: 1-16, but we can also position with a selector string.
         zoomWindowWidth: 400,
         zoomEnabled: true, //false disables zoomwindow from showing
         zIndex: 999
