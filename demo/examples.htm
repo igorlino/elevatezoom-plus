@@ -16,10 +16,10 @@
           href="https://cdn.rawgit.com/igorlino/fancybox-plus/1.3.6/css/jquery.fancybox-plus.css" media="screen"/>
 
     <!--
-    <script type="text/javascript" src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.12/src/jquery.ez-plus.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.12/css/jquery.ez-plus.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.12/demo/css/style.css" media="screen" />
-    <script type="text/javascript" src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.12/demo/js/web.js?m=20100203"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.13/src/jquery.ez-plus.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.13/css/jquery.ez-plus.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.13/demo/css/style.css" media="screen" />
+    <script type="text/javascript" src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.13/demo/js/web.js?m=20100203"></script>
     -->
 
     <script type="text/javascript" src="../src/jquery.ez-plus.js"></script>
@@ -44,9 +44,9 @@
     <script type="text/javascript"
             src="https://cdn.rawgit.com/igorlino/snippet-helper/1.0.1/src/snippet-helper.js"></script>
     <link type="text/css" rel="stylesheet"
-          href="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.12/demo/css/prism.css"/>
+          href="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.13/demo/css/prism.css"/>
     <script type="text/javascript"
-            src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.12/demo/js/prism.js"></script>
+            src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.13/demo/js/prism.js"></script>
 
 </head>
 <body>
@@ -85,6 +85,7 @@
                     <li><a href="#zoom-level">Zoom Level</a></li>
                     <li><a href="#zoom-window-size">Zoom Window Size</a></li>
                     <li><a href="#zoom-constrain">Zoom with Image Constrain</a></li>
+                    <li><a href="#zoom-responsive">Responsive</a></li>
                 </ul>
                 <br/><br/>
             </div>
@@ -390,7 +391,7 @@
                             offset
                             to adjust
                             <img
-                                src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.12/demo/images/window-positions.png"/>
+                                src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.13/demo/images/window-positions.png"/>
                             <br/>You can also position the window into a container
                         </p>
                         <a href="#" rel="view_script_04" class="view_source">SHOW THE CODE</a>
@@ -898,6 +899,98 @@
                 </div>
                 <hr class="style-two">
 
+                <div class="zoom-wrapper">
+
+                    <link rel="stylesheet" type="text/css" href="snippets/code-ezp-e13.css" media="screen"/>
+                    <div class="zoom-left">
+                        <h3 ><a name="zoom-window-size">Responsive - Screen-size sensitivity</a></h3>
+
+                        <p>
+                            The example below defines 3 responsive CSS media queries and also in the 'respond' with 4 ranges.
+                        <ol style="float:left;text-align: left">
+                            <li>Default - tint color is #0F0(green) <span class="responsive_default">ACTIVE</span></li>
+                            <li>[800px,1199px] - tint color is #00F (purple) <span class="responsive_800">ACTIVE</span></li>
+                            <li>[600px,799px] - tint color is #F00(red) <span class="responsive_600">ACTIVE</span></li>
+                            <li>[100px,599px] - tint color is disabled <span class="responsive_100">ACTIVE</span></li>
+                        </ol>
+
+
+                        </p>
+
+                        <p>
+                            <span id="status"></span>
+                            <span id="imgWidth"></span>
+                        </p>
+
+                        <a href="#" rel="view_script_13" class="view_source">SHOW THE CODE</a>
+
+                    </div>
+                    <div class="zoom-left">
+                        <img id="responsive_img"
+                             width="411"
+                             src="images/small/image1.jpg" data-zoom-image="images/large/image1.jpg"/>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <script type="text/javascript">
+                        $(function () {
+
+                            initEZPlus();
+
+                            //Triggered when window width is changed.
+                            $( window ).on( "resize", function() {
+                                var windowWidth = $( window ).width(), // get window width
+                                    imgWidth = $( "#responsive_img").width(); // get image width
+                                //Init elevateZoom
+                                initEZPlus();
+                                //display status
+                                $( "#status" ).html("Status: Window resized!.");
+                                //display image and window width
+                                $( "#imgWidth" ).html("Image width: " + imgWidth + "px" + "<br />" + "Window width: " + windowWidth + "px");
+                            });
+
+                            function initEZPlus() {
+                                $("#responsive_img").ezPlus({
+                                    responsive : true,
+                                    scrollZoom : false,
+                                    showLens: true,
+
+                                    tint: true,
+                                    tintColour: '#0F0',
+                                    tintOpacity: 0.5,
+                                    respond: [
+                                        {
+                                            range: '600-799',
+                                            tintColour: '#F00',
+                                            zoomWindowHeight: 100,
+                                            zoomWindowWidth: 100
+                                        },
+                                        {
+                                            range: '800-1199',
+                                            tintColour: '#00F',
+                                            zoomWindowHeight: 200,
+                                            zoomWindowWidth: 200
+                                        },
+                                        {
+                                            range: '100-599',
+                                            enabled: false,
+                                            showLens: false
+                                        }
+                                    ]
+                                });
+                            }
+                        });
+                    </script>
+                    <div class="scripts view_script_13">
+                        <h6>HTML</h6>
+                        <pre><code id="code-ezp-e13-html"></code></pre>
+                        <h6>JAVASCRIPT</h6>
+                        <pre><code id="code-ezp-e13-js"></code></pre>
+                        <h6>CSS</h6>
+                        <pre><code id="code-ezp-e13-css"></code></pre>
+                    </div>
+                </div>
+                <hr class="style-two">
+
 
                 <div class="clear"></div>
             </div>
@@ -915,7 +1008,8 @@
                     {code: "code-ezp-emw", ext: "html,js"},
                     {code: "code-ezp-e10", ext: "html,js"},
                     {code: "code-ezp-e11", ext: "html,js"},
-                    {code: "code-ezp-e12", ext: "html,js"}
+                    {code: "code-ezp-e12", ext: "html,js"},
+                    {code: "code-ezp-e13", ext: "html,js,css"}
                 ];
                 $(document).ready(function () {
                     snippetHelper.loadSnippets(snippets);

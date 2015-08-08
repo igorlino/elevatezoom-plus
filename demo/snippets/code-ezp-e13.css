@@ -1,0 +1,59 @@
+/*Default*/
+#responsive_img {
+    width:800px ;
+}
+
+.responsive_default {
+    display:inline-block;
+    color: #159957;
+}
+.responsive_100, .responsive_600, .responsive_800 {
+    display:none;
+    color: #159957;
+}
+
+/*Target devices 100-599px*/
+@media only screen and  (min-width: 100px) and (max-width: 599px) {
+
+    #responsive_img {
+        width:300px ;
+    }
+
+    .responsive_100 {
+        display:inline-block;
+    }
+    .responsive_default {
+        display:none;
+    }
+
+}
+/*Target devices 600-799 width*/
+@media only screen and (min-width: 600px) and (max-width: 799px) {
+
+    #responsive_img {
+        width:450px;
+    }
+
+    .responsive_600 {
+        display:inline-block;
+    }
+    .responsive_default {
+        display:none;
+    }
+}
+
+/*Target devices 800-1199px*/
+@media only screen and  (min-width: 800px) and (max-width: 1199px) {
+
+    #responsive_img {
+        width:600px ;
+    }
+
+    .responsive_800 {
+        display:inline-block;
+    }
+    .responsive_default {
+        display:none;
+    }
+
+}
