@@ -15,10 +15,11 @@
     <link rel="stylesheet" type="text/css"
           href="https://cdn.rawgit.com/igorlino/fancybox-plus/1.3.6/css/jquery.fancybox-plus.css" media="screen"/>
 
-    <script type="text/javascript" src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.11/src/jquery.ez-plus.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.11/css/jquery.ez-plus.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.11/demo/css/style.css" media="screen" />
-    <script type="text/javascript" src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.11/demo/js/web.js?m=20100203"></script>
+
+    <script type="text/javascript" src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.13/src/jquery.ez-plus.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.13/css/jquery.ez-plus.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.13/demo/css/style.css" media="screen" />
+    <script type="text/javascript" src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.13/demo/js/web.js?m=20100203"></script>
 
     <!--
     <script type="text/javascript" src="../src/jquery.ez-plus.js"></script>
@@ -44,9 +45,9 @@
     <script type="text/javascript"
             src="https://cdn.rawgit.com/igorlino/snippet-helper/1.0.1/src/snippet-helper.js"></script>
     <link type="text/css" rel="stylesheet"
-          href="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.11/demo/css/prism.css"/>
+          href="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.13/demo/css/prism.css"/>
     <script type="text/javascript"
-            src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.11/demo/js/prism.js"></script>
+            src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.13/demo/js/prism.js"></script>
 
 </head>
 <body>
@@ -85,6 +86,7 @@
                     <li><a href="#zoom-level">Zoom Level</a></li>
                     <li><a href="#zoom-window-size">Zoom Window Size</a></li>
                     <li><a href="#zoom-constrain">Zoom with Image Constrain</a></li>
+                    <li><a href="#zoom-responsive">Responsive</a></li>
                 </ul>
                 <br/><br/>
             </div>
@@ -237,9 +239,9 @@
                             <a href="#" class="elevatezoom-gallery"
                                data-image="images/small/image2.jpg"
                                data-zoom-image="images/large/image2.jpg"
-                                    ><img
-                                    src="images/small/image2.jpg"
-                                    width="100"/></a>
+                                ><img
+                                src="images/small/image2.jpg"
+                                width="100"/></a>
 
                             <a href="tester" class="elevatezoom-gallery"
                                data-image="images/small/image3.jpg"
@@ -253,9 +255,9 @@
                                data-zoom-image="images/large/image4.jpg"
 
                                class="slide-content"
-                                    ><img
-                                    src="images/small/image4.jpg"
-                                    width="100"/></a>
+                                ><img
+                                src="images/small/image4.jpg"
+                                width="100"/></a>
 
                         </div>
                     </div>
@@ -326,11 +328,11 @@
                     <div class="zoom-left">
                         <div style="width: 190px;float:left;">
                             <div
-                                    style="padding: 5px 10px;width: 170px;border-top-left-radius: 10px;background-color: #333;color: white;border-top-right-radius: 10px;">
+                                style="padding: 5px 10px;width: 170px;border-top-left-radius: 10px;background-color: #333;color: white;border-top-right-radius: 10px;">
                                 Position 1: Default
                             </div>
                             <div
-                                    style="width: 170px;padding: 10px;border: 1px solid #E8E8E6;float: left;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
+                                style="width: 170px;padding: 10px;border: 1px solid #E8E8E6;float: left;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
                                 <img class="zoom-img" id="zoom_04a"
                                      src="images/small/image2.jpg"
                                      data-zoom-image="images/large/image2.jpg"
@@ -339,11 +341,11 @@
                         </div>
                         <div style="width: 190px;margin-left:10px;float:left;">
                             <div
-                                    style="padding: 5px 10px;width: 170px;border-top-left-radius: 10px;background-color: #333;color: white;border-top-right-radius: 10px;">
+                                style="padding: 5px 10px;width: 170px;border-top-left-radius: 10px;background-color: #333;color: white;border-top-right-radius: 10px;">
                                 Position 12
                             </div>
                             <div
-                                    style="width: 170px;padding: 10px;border: 1px solid #E8E8E6;float: left;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
+                                style="width: 170px;padding: 10px;border: 1px solid #E8E8E6;float: left;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
 
                                 <img class="zoom-img" id="zoom_04b"
                                      src="images/small/image2.jpg"
@@ -353,11 +355,11 @@
                         </div>
                         <div style="margin-top:40px;width: 190px;float:left;">
                             <div
-                                    style="padding: 5px 10px;width: 170px;border-top-left-radius: 10px;background-color: #333;color: white;border-top-right-radius: 10px;">
+                                style="padding: 5px 10px;width: 170px;border-top-left-radius: 10px;background-color: #333;color: white;border-top-right-radius: 10px;">
                                 Position in a DIV
                             </div>
                             <div
-                                    style="width: 170px;padding: 10px;border: 1px solid #E8E8E6;float: left;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
+                                style="width: 170px;padding: 10px;border: 1px solid #E8E8E6;float: left;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
 
                                 <img class="zoom-img" id="zoom_04c"
                                      src="images/small/image2.jpg"
@@ -367,11 +369,11 @@
                         </div>
                         <div style="margin-top:40px;width: 190px;margin-left:10px;float:left;">
                             <div
-                                    style="padding: 5px 10px;width: 170px;border-top-left-radius: 10px;background-color: #333;color: white;border-top-right-radius: 10px;">
+                                style="padding: 5px 10px;width: 170px;border-top-left-radius: 10px;background-color: #333;color: white;border-top-right-radius: 10px;">
                                 Position 1 - 10 px X-offset
                             </div>
                             <div
-                                    style="width: 170px;padding: 10px;border: 1px solid #E8E8E6;float: left;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
+                                style="width: 170px;padding: 10px;border: 1px solid #E8E8E6;float: left;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
 
 
                                 <img class="zoom-img" id="zoom_04d"
@@ -390,7 +392,7 @@
                             offset
                             to adjust
                             <img
-                                    src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.11/demo/images/window-positions.png"/>
+                                src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.13/demo/images/window-positions.png"/>
                             <br/>You can also position the window into a container
                         </p>
                         <a href="#" rel="view_script_04" class="view_source">SHOW THE CODE</a>
@@ -559,8 +561,8 @@
                             <a href="#" class="elevatezoom-gallery"
                                data-image="images/small/image2.jpg"
                                data-zoom-image="images/large/image2.jpg"
-                                    ><img src="images/small/image2.jpg"
-                                          width="100"/></a>
+                                ><img src="images/small/image2.jpg"
+                                      width="100"/></a>
 
                             <a href="tester" class="elevatezoom-gallery"
                                data-image="images/small/image3.jpg"
@@ -574,8 +576,8 @@
                                data-zoom-image="images/large/image4.jpg"
 
                                class="slide-content"
-                                    ><img src="images/small/image4.jpg"
-                                          width="100"/></a>
+                                ><img src="images/small/image4.jpg"
+                                      width="100"/></a>
 
                         </div>
                     </div>
@@ -831,8 +833,8 @@
                             <a href="#" class="elevatezoom-gallery"
                                data-image="images/small/image2.jpg"
                                data-zoom-image="images/large/image2.jpg"
-                                    ><img src="images/small/image2.jpg"
-                                          width="100"/></a>
+                                ><img src="images/small/image2.jpg"
+                                      width="100"/></a>
 
                             <a href="tester" class="elevatezoom-gallery"
                                data-image="images/small/image3.jpg"
@@ -846,7 +848,7 @@
                                data-zoom-image="images/large/image5.jpg"
 
                                class="slide-content"
-                                    ><img src="images/small/image5.jpg" height="68"/></a>
+                                ><img src="images/small/image5.jpg" height="68"/></a>
 
                         </div>
                     </div>
@@ -898,6 +900,98 @@
                 </div>
                 <hr class="style-two">
 
+                <div class="zoom-wrapper">
+
+                    <link rel="stylesheet" type="text/css" href="snippets/code-ezp-e13.css" media="screen"/>
+                    <div class="zoom-left">
+                        <h3 ><a name="zoom-window-size">Responsive - Screen-size sensitivity</a></h3>
+
+                        <p>
+                            The example below defines 3 responsive CSS media queries and also in the 'respond' with 4 ranges.
+                        <ol style="float:left;text-align: left">
+                            <li>Default - tint color is #0F0(green) <span class="responsive_default">ACTIVE</span></li>
+                            <li>[800px,1199px] - tint color is #00F (purple) <span class="responsive_800">ACTIVE</span></li>
+                            <li>[600px,799px] - tint color is #F00(red) <span class="responsive_600">ACTIVE</span></li>
+                            <li>[100px,599px] - tint color is disabled <span class="responsive_100">ACTIVE</span></li>
+                        </ol>
+
+
+                        </p>
+
+                        <p>
+                            <span id="status"></span>
+                            <span id="imgWidth"></span>
+                        </p>
+
+                        <a href="#" rel="view_script_13" class="view_source">SHOW THE CODE</a>
+
+                    </div>
+                    <div class="zoom-left">
+                        <img id="responsive_img"
+                             width="411"
+                             src="images/small/image1.jpg" data-zoom-image="images/large/image1.jpg"/>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <script type="text/javascript">
+                        $(function () {
+
+                            initEZPlus();
+
+                            //Triggered when window width is changed.
+                            $( window ).on( "resize", function() {
+                                var windowWidth = $( window ).width(), // get window width
+                                    imgWidth = $( "#responsive_img").width(); // get image width
+                                //Init elevateZoom
+                                initEZPlus();
+                                //display status
+                                $( "#status" ).html("Status: Window resized!.");
+                                //display image and window width
+                                $( "#imgWidth" ).html("Image width: " + imgWidth + "px" + "<br />" + "Window width: " + windowWidth + "px");
+                            });
+
+                            function initEZPlus() {
+                                $("#responsive_img").ezPlus({
+                                    responsive : true,
+                                    scrollZoom : false,
+                                    showLens: true,
+
+                                    tint: true,
+                                    tintColour: '#0F0',
+                                    tintOpacity: 0.5,
+                                    respond: [
+                                        {
+                                            range: '600-799',
+                                            tintColour: '#F00',
+                                            zoomWindowHeight: 100,
+                                            zoomWindowWidth: 100
+                                        },
+                                        {
+                                            range: '800-1199',
+                                            tintColour: '#00F',
+                                            zoomWindowHeight: 200,
+                                            zoomWindowWidth: 200
+                                        },
+                                        {
+                                            range: '100-599',
+                                            enabled: false,
+                                            showLens: false
+                                        }
+                                    ]
+                                });
+                            }
+                        });
+                    </script>
+                    <div class="scripts view_script_13">
+                        <h6>HTML</h6>
+                        <pre><code id="code-ezp-e13-html"></code></pre>
+                        <h6>JAVASCRIPT</h6>
+                        <pre><code id="code-ezp-e13-js"></code></pre>
+                        <h6>CSS</h6>
+                        <pre><code id="code-ezp-e13-css"></code></pre>
+                    </div>
+                </div>
+                <hr class="style-two">
+
 
                 <div class="clear"></div>
             </div>
@@ -915,7 +1009,8 @@
                     {code: "code-ezp-emw", ext: "html,js"},
                     {code: "code-ezp-e10", ext: "html,js"},
                     {code: "code-ezp-e11", ext: "html,js"},
-                    {code: "code-ezp-e12", ext: "html,js"}
+                    {code: "code-ezp-e12", ext: "html,js"},
+                    {code: "code-ezp-e13", ext: "html,js,css"}
                 ];
                 $(document).ready(function () {
                     snippetHelper.loadSnippets(snippets);
@@ -926,7 +1021,7 @@
             <div id="footer">
                 <p>Contact: info <span>[at]</span> <a href="http://igorlino.github.io/elevatezoom-plus/">issues</a>
                     &nbsp;&nbsp; /please, don`t send emails for help, use <a
-                            href="https://github.com/igorlino/elevatezoom-plus/issues">issues</a> instead</p>
+                        href="https://github.com/igorlino/elevatezoom-plus/issues">issues</a> instead</p>
             </div>
         </div>
     </div>
