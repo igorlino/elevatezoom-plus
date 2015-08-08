@@ -53,6 +53,12 @@ if (typeof Object.create !== 'function') {
                 self.options.showLens = false;
             }
 
+            //UUID WHEN MISSING IDENTIFIER
+            if (self.options.zoomId === -1) {
+                self.options.zoomId = generateUUID();
+            }
+
+
             //Remove alt on hover
 
             self.$elem.parent().removeAttr('title').removeAttr('alt');
@@ -87,6 +93,16 @@ if (typeof Object.create !== 'function') {
                     return false;
                 }
             });
+
+            function generateUUID() {
+                var d = new Date().getTime();
+                var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                    var r = (d + Math.random() * 16) % 16 | 0;
+                    d = Math.floor(d / 16);
+                    return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+                });
+                return uuid;
+            }
         },
         refresh: function (length) {
             var self = this;
@@ -258,7 +274,9 @@ if (typeof Object.create !== 'function') {
             //self.zoomContainer = $('<div/>').addClass('zoomContainer').css({"position":"relative", "height":self.nzHeight, "width":self.nzWidth});
 
             self.zoomContainer =
-                $('<div class="zoomContainer" style="' +
+                $('<div class="zoomContainer" ' +
+                    'uuid="' + self.options.zoomId + '"' +
+                    'style="' +
                     'position:absolute;' +
                     'left:' + self.nzOffset.left + 'px;' +
                     'top:' + self.nzOffset.top + 'px;' +
@@ -330,12 +348,12 @@ if (typeof Object.create !== 'function') {
             /*-------------------END THE ZOOM WINDOW AND LENS----------------------------------*/
             if (self.options.touchEnabled) {
                 //touch events
-                self.$elem.bind('touchmove', function (e) {
+                self.$elem.bind('touchmove.ezpspace', function (e) {
                     e.preventDefault();
                     var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
                     self.setPosition(touch);
                 });
-                self.zoomContainer.bind('touchmove', function (e) {
+                self.zoomContainer.bind('touchmove.ezpspace', function (e) {
                     if (self.options.zoomType === 'inner') {
                         self.showHideWindow('show');
 
@@ -345,7 +363,7 @@ if (typeof Object.create !== 'function') {
                     self.setPosition(touch);
 
                 });
-                self.zoomContainer.bind('touchend', function (e) {
+                self.zoomContainer.bind('touchend.ezpspace', function (e) {
                     self.showHideWindow('hide');
                     if (self.options.showLens) {
                         self.showHideLens('hide');
@@ -355,7 +373,7 @@ if (typeof Object.create !== 'function') {
                     }
                 });
 
-                self.$elem.bind('touchend', function (e) {
+                self.$elem.bind('touchend.ezpspace', function (e) {
                     self.showHideWindow('hide');
                     if (self.options.showLens) {
                         self.showHideLens('hide');
@@ -365,14 +383,14 @@ if (typeof Object.create !== 'function') {
                     }
                 });
                 if (self.options.showLens) {
-                    self.zoomLens.bind('touchmove', function (e) {
+                    self.zoomLens.bind('touchmove.ezpspace', function (e) {
 
                         e.preventDefault();
                         var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
                         self.setPosition(touch);
                     });
 
-                    self.zoomLens.bind('touchend', function (e) {
+                    self.zoomLens.bind('touchend.ezpspace', function (e) {
                         self.showHideWindow('hide');
                         if (self.options.showLens) {
                             self.showHideLens('hide');
@@ -384,7 +402,7 @@ if (typeof Object.create !== 'function') {
                 }
             }
             //Needed to work in IE
-            self.$elem.bind('mousemove', function (e) {
+            self.$elem.bind('mousemove.ezpspace', function (e) {
                 if (self.overWindow === false) {
                     self.setElements('show');
                 }
@@ -398,9 +416,9 @@ if (typeof Object.create !== 'function') {
 
             });
 
-            self.zoomContainer.bind('click', self.options.onImageClick);
+            self.zoomContainer.bind('click.ezpspace', self.options.onImageClick);
 
-            self.zoomContainer.bind('mousemove', function (e) {
+            self.zoomContainer.bind('mousemove.ezpspace', function (e) {
                 if (self.overWindow === false) {
                     self.setElements('show');
                 }
@@ -431,7 +449,7 @@ if (typeof Object.create !== 'function') {
 
             //register the mouse tracking
             if (elementToTrack) {
-                elementToTrack.bind('mousemove', mouseMoveZoomHandler);
+                elementToTrack.bind('mousemove.ezpspace', mouseMoveZoomHandler);
             }
 
             //  lensFadeOut: 500,  zoomTintFadeIn
@@ -519,6 +537,16 @@ if (typeof Object.create !== 'function') {
                     return false;
                 });
             }
+        },
+        destroy: function () {
+            var self = this;
+            self.$elem.unbind('ezpspace');
+            $(self.zoomContainer).remove();
+            self.delete;
+        },
+        getIdentifier: function () {
+            var self = this;
+            return self.options.zoomId;
         },
         setElements: function (type) {
             var self = this;
@@ -970,7 +998,7 @@ if (typeof Object.create !== 'function') {
             else {
                 // For BC purposes, treat passed element as ID if element not found
                 self.externalContainer = $(self.options.zoomWindowPosition);
-                if ( ! self.externalContainer.length) {
+                if (!self.externalContainer.length) {
                     self.externalContainer = $('#' + self.options.zoomWindowPosition);
                 }
 
@@ -1841,8 +1869,10 @@ if (typeof Object.create !== 'function') {
         tintOpacity: 0.4, //opacity of the tint
         touchEnabled: true,
 
+
         zoomActivation: 'hover', // Can also be click (PLACEHOLDER FOR NEXT VERSION)
         zoomContainerAppendTo: 'body', //zoom container parent selector
+        zoomId: -1, // identifier for the zoom container
         zoomLevel: 1, //default zoom level of image
         zoomTintFadeIn: false,
         zoomTintFadeOut: false,
