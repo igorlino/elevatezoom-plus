@@ -195,7 +195,7 @@ if (typeof Object.create !== 'function') {
                     'float: left;' +
                     'display: none;' +
                     'cursor:' + (self.options.cursor) + ';' +
-                    'px solid ' + self.options.borderColour + ';' +
+                    'border: ' + String(self.options.borderSize) + 'px solid ' + self.options.borderColour + ';' +
                     'background-repeat: no-repeat;' +
                     'position: absolute;';
             }
