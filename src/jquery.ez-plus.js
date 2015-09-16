@@ -1270,12 +1270,16 @@ if (typeof Object.create !== 'function') {
             var newImg = new Image();
 
             if (self.options.loadingIcon) {
-                self.spinner = $('<div style="' +
-                    'background: url(\'' + self.options.loadingIcon + '\') no-repeat center;' +
+                var styleAttr = 'background: url(\'' + self.options.loadingIcon + '\') no-repeat center;' +
                     'height:' + self.nzHeight + 'px;' +
                     'width:' + self.nzWidth + 'px;' +
-                    'z-index: 2000;position: absolute; ' +
-                    'background-position: center center;"></div>');
+                    'z-index: 2000;' +
+                    'position: absolute; ' +
+                    'background-position: center center;';
+                if (self.options.zoomType === 'inner') {
+                    styleAttr += 'top: 0px;';
+                }
+                self.spinner = $('<div class="ezp-spinner" style="' + styleAttr + '"></div>');
                 self.$elem.after(self.spinner);
             }
 
