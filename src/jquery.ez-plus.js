@@ -542,7 +542,6 @@ if (typeof Object.create !== 'function') {
             var self = this;
             self.$elem.unbind('ezpspace');
             $(self.zoomContainer).remove();
-            self.delete;
         },
         getIdentifier: function () {
             var self = this;
