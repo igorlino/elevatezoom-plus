@@ -1489,7 +1489,7 @@ if (typeof Object.create !== 'function') {
         doneCallback: function () {
             var self = this;
             if (self.options.loadingIcon) {
-                self.spinner.hide();
+                self.spinner.remove();
             }
 
             self.nzOffset = self.$elem.offset();
