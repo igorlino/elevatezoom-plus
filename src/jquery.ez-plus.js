@@ -58,7 +58,6 @@ if (typeof Object.create !== 'function') {
                 self.options.zoomId = generateUUID();
             }
 
-
             //Remove alt on hover
 
             self.$elem.parent().removeAttr('title').removeAttr('alt');
@@ -1871,7 +1870,6 @@ if (typeof Object.create !== 'function') {
         tintColour: '#333', //default tint color, can be anything, red, #ccc, rgb(0,0,0)
         tintOpacity: 0.4, //opacity of the tint
         touchEnabled: true,
-
 
         zoomActivation: 'hover', // Can also be click (PLACEHOLDER FOR NEXT VERSION)
         zoomContainerAppendTo: 'body', //zoom container parent selector
