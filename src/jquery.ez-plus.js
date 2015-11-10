@@ -58,7 +58,6 @@ if (typeof Object.create !== 'function') {
                 self.options.zoomId = generateUUID();
             }
 
-
             //Remove alt on hover
 
             self.$elem.parent().removeAttr('title').removeAttr('alt');
@@ -195,7 +194,7 @@ if (typeof Object.create !== 'function') {
                     'float: left;' +
                     'display: none;' +
                     'cursor:' + (self.options.cursor) + ';' +
-                    'px solid ' + self.options.borderColour + ';' +
+                    'border: ' + String(self.options.borderSize) + 'px solid ' + self.options.borderColour + ';' +
                     'background-repeat: no-repeat;' +
                     'position: absolute;';
             }
@@ -542,7 +541,6 @@ if (typeof Object.create !== 'function') {
             var self = this;
             self.$elem.unbind('ezpspace');
             $(self.zoomContainer).remove();
-            self.delete;
         },
         getIdentifier: function () {
             var self = this;
@@ -1270,12 +1268,16 @@ if (typeof Object.create !== 'function') {
             var newImg = new Image();
 
             if (self.options.loadingIcon) {
-                self.spinner = $('<div style="' +
-                    'background: url(\'' + self.options.loadingIcon + '\') no-repeat center;' +
+                var styleAttr = 'background: url(\'' + self.options.loadingIcon + '\') no-repeat center;' +
                     'height:' + self.nzHeight + 'px;' +
                     'width:' + self.nzWidth + 'px;' +
-                    'z-index: 2000;position: absolute; ' +
-                    'background-position: center center;"></div>');
+                    'z-index: 2000;' +
+                    'position: absolute; ' +
+                    'background-position: center center;';
+                if (self.options.zoomType === 'inner') {
+                    styleAttr += 'top: 0px;';
+                }
+                self.spinner = $('<div class="ezp-spinner" style="' + styleAttr + '"></div>');
                 self.$elem.after(self.spinner);
             }
 
@@ -1487,7 +1489,7 @@ if (typeof Object.create !== 'function') {
         doneCallback: function () {
             var self = this;
             if (self.options.loadingIcon) {
-                self.spinner.hide();
+                self.spinner.remove();
             }
 
             self.nzOffset = self.$elem.offset();
@@ -1868,7 +1870,6 @@ if (typeof Object.create !== 'function') {
         tintColour: '#333', //default tint color, can be anything, red, #ccc, rgb(0,0,0)
         tintOpacity: 0.4, //opacity of the tint
         touchEnabled: true,
-
 
         zoomActivation: 'hover', // Can also be click (PLACEHOLDER FOR NEXT VERSION)
         zoomContainerAppendTo: 'body', //zoom container parent selector
