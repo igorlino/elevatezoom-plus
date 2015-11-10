@@ -544,6 +544,10 @@ if (typeof Object.create !== 'function') {
             var self = this;
             self.$elem.unbind('ezpspace');
             $(self.zoomContainer).remove();
+			if (self.options.loadingIcon && !!self.spinner && !!self.spinner.length) {
+                self.spinner.remove();
+				delete self.spinner;
+            }
         },
         getIdentifier: function () {
             var self = this;
