@@ -35,9 +35,9 @@ if (typeof Object.create !== 'function') {
             self.elem = elem;
             self.$elem = $(elem);
 
-            self.imageSrc = self.$elem.data('zoom-image') ? self.$elem.data('zoom-image') : self.$elem.attr('src');
-
             self.options = $.extend({}, $.fn.ezPlus.options, self.responsiveConfig(options || {}));
+			
+			self.imageSrc = self.$elem.data('zoom-image') ? self.$elem.data('zoom-image') : self.$elem.attr('src');
 
             if (!self.options.enabled) {
                 return;
@@ -494,6 +494,7 @@ if (typeof Object.create !== 'function') {
             }
 
             if (self.options.scrollZoom) {
+				//see compatibility of mouse events at https://developer.mozilla.org/en-US/docs/Web/Events/mousewheel
                 self.zoomContainer.add(self.$elem).bind('wheel DOMMouseScroll MozMousePixelScroll', function (e) {
                     // in IE there is issue with firing of mouseleave - So check whether still scrolling
                     // and on mouseleave check if scrolllock
