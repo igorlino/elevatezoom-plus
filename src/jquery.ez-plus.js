@@ -1270,7 +1270,7 @@ if (typeof Object.create !== 'function') {
             var self = this;
             var newImg = new Image();
 
-            if (self.options.loadingIcon) {
+            if (self.options.loadingIcon && !self.spinner) {
                 var styleAttr = 'background: url(\'' + self.options.loadingIcon + '\') no-repeat center;' +
                     'height:' + self.nzHeight + 'px;' +
                     'width:' + self.nzWidth + 'px;' +
@@ -1282,7 +1282,9 @@ if (typeof Object.create !== 'function') {
                 }
                 self.spinner = $('<div class="ezp-spinner" style="' + styleAttr + '"></div>');
                 self.$elem.after(self.spinner);
-            }
+            } else {
+				self.spinner.show();
+			}
 
             self.options.onImageSwap(self.$elem);
 
@@ -1491,7 +1493,7 @@ if (typeof Object.create !== 'function') {
 
         doneCallback: function () {
             var self = this;
-            if (self.options.loadingIcon) {
+            if (self.options.loadingIcon && !!self.spinner && !!self.spinner.length) {
                 self.spinner.remove();
             }
 
