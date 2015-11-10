@@ -37,7 +37,7 @@ if (typeof Object.create !== 'function') {
 
             self.options = $.extend({}, $.fn.ezPlus.options, self.responsiveConfig(options || {}));
 			
-			self.imageSrc = self.$elem.data('zoom-image') ? self.$elem.data('zoom-image') : self.$elem.attr('src');
+			self.imageSrc = self.$elem.data(self.options.attrImageZoomSrc) ? self.$elem.data(self.options.attrImageZoomSrc) : self.$elem.attr('src');
 
             if (!self.options.enabled) {
                 return;
@@ -81,8 +81,8 @@ if (typeof Object.create !== 'function') {
                 }
 
                 //call the swap image function
-                if ($(this).data('zoom-image')) {
-                    self.zoomImagePre = $(this).data('zoom-image');
+                if ($(this).data(self.options.attrImageZoomSrc)) {
+                    self.zoomImagePre = $(this).data(self.options.attrImageZoomSrc);
                 }
                 else {
                     self.zoomImagePre = $(this).data('image');
@@ -1547,8 +1547,8 @@ if (typeof Object.create !== 'function') {
                 $('#' + self.options.gallery + ' a').each(function () {
 
                     var imgSrc = '';
-                    if ($(this).data('zoom-image')) {
-                        imgSrc = $(this).data('zoom-image');
+                    if ($(this).data(self.options.attrImageZoomSrc)) {
+                        imgSrc = $(this).data(self.options.attrImageZoomSrc);
                     }
                     else if ($(this).data('image')) {
                         imgSrc = $(this).data('image');
@@ -1816,6 +1816,7 @@ if (typeof Object.create !== 'function') {
     };
 
     $.fn.ezPlus.options = {
+		attrImageZoomSrc : 'zoom-image', // attribute to plugin use for zoom
         borderColour: '#888',
         borderSize: 4,
         constrainSize: false,  //in pixels the dimensions you want to constrain on
