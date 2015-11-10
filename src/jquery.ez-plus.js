@@ -1743,7 +1743,7 @@ if (typeof Object.create !== 'function') {
                     if (self.nzWidth > self.nzHeight) {
                         self.currentZoomLevel = self.newvaluewidth;
                     }
-                    if (self.nzHeight > self.nzWidth) {
+                    else if (self.nzHeight >= self.nzWidth) {
                         self.currentZoomLevel = self.newvaluewidth;
                     }
                 }
