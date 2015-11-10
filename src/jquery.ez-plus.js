@@ -1282,7 +1282,7 @@ if (typeof Object.create !== 'function') {
                 }
                 self.spinner = $('<div class="ezp-spinner" style="' + styleAttr + '"></div>');
                 self.$elem.after(self.spinner);
-            } else if (self.spinner) {
+            } else if (!self.spinner){
 				self.spinner.show();
 			}
 
@@ -1494,7 +1494,7 @@ if (typeof Object.create !== 'function') {
         doneCallback: function () {
             var self = this;
             if (self.options.loadingIcon && !!self.spinner && !!self.spinner.length) {
-                self.spinner.remove();
+                self.spinner.hide();
             }
 
             self.nzOffset = self.$elem.offset();
