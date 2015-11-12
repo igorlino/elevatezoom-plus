@@ -36,8 +36,8 @@ if (typeof Object.create !== 'function') {
             self.$elem = $(elem);
 
             self.options = $.extend({}, $.fn.ezPlus.options, self.responsiveConfig(options || {}));
-			
-			self.imageSrc = self.$elem.data(self.options.attrImageZoomSrc) ? self.$elem.data(self.options.attrImageZoomSrc) : self.$elem.attr('src');
+
+            self.imageSrc = self.$elem.data(self.options.attrImageZoomSrc) ? self.$elem.data(self.options.attrImageZoomSrc) : self.$elem.attr('src');
 
             if (!self.options.enabled) {
                 return;
@@ -281,9 +281,9 @@ if (typeof Object.create !== 'function') {
                     'height:' + self.nzHeight + 'px;' + '' +
                     'width:' + self.nzWidth + 'px;' +
                     'z-index:' + self.options.zIndex + '"></div>');
-			if (self.$elem.attr("id")) {
-				self.zoomContainer.attr("id", self.$elem.attr("id") + "-zoomContainer");
-			}
+            if (self.$elem.attr("id")) {
+                self.zoomContainer.attr("id", self.$elem.attr("id") + "-zoomContainer");
+            }
             $(self.options.zoomContainerAppendTo).append(self.zoomContainer);
 
             //this will add overflow hidden and contrain the lens on lens mode
@@ -494,7 +494,7 @@ if (typeof Object.create !== 'function') {
             }
 
             if (self.options.scrollZoom) {
-				//see compatibility of mouse events at https://developer.mozilla.org/en-US/docs/Web/Events/mousewheel
+                //see compatibility of mouse events at https://developer.mozilla.org/en-US/docs/Web/Events/mousewheel
                 self.zoomContainer.add(self.$elem).bind('wheel DOMMouseScroll MozMousePixelScroll', function (e) {
                     // in IE there is issue with firing of mouseleave - So check whether still scrolling
                     // and on mouseleave check if scrolllock
@@ -544,9 +544,9 @@ if (typeof Object.create !== 'function') {
             var self = this;
             self.$elem.unbind('ezpspace');
             $(self.zoomContainer).remove();
-			if (self.options.loadingIcon && !!self.spinner && !!self.spinner.length) {
+            if (self.options.loadingIcon && !!self.spinner && !!self.spinner.length) {
                 self.spinner.remove();
-				delete self.spinner;
+                delete self.spinner;
             }
         },
         getIdentifier: function () {
@@ -1286,8 +1286,8 @@ if (typeof Object.create !== 'function') {
                 }
                 self.spinner = $('<div class="ezp-spinner" style="' + styleAttr + '"></div>');
                 self.$elem.after(self.spinner);
-            } else if (self.spinner){
-				self.spinner.show();
+            } else if (self.spinner) {
+                self.spinner.show();
             }
 
             self.options.onImageSwap(self.$elem);
@@ -1822,7 +1822,7 @@ if (typeof Object.create !== 'function') {
     };
 
     $.fn.ezPlus.options = {
-		attrImageZoomSrc : 'zoom-image', // attribute to plugin use for zoom
+        attrImageZoomSrc: 'zoom-image', // attribute to plugin use for zoom
         borderColour: '#888',
         borderSize: 4,
         constrainSize: false,  //in pixels the dimensions you want to constrain on
