@@ -1286,9 +1286,9 @@ if (typeof Object.create !== 'function') {
                 }
                 self.spinner = $('<div class="ezp-spinner" style="' + styleAttr + '"></div>');
                 self.$elem.after(self.spinner);
-            } else if (!self.spinner){
+            } else if (self.spinner){
 				self.spinner.show();
-			}
+            }
 
             self.options.onImageSwap(self.$elem);
 
