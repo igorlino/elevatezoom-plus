@@ -658,7 +658,7 @@
 
                         <p>
                             You can use the default easing or a custom easing setting.
-                            The amount of easing can also be altered - default is 12, set higher for more, lower for
+                            The amount of easing can also be altered - default is 16, set higher for more, lower for
                             less
 
                         </p>
@@ -670,6 +670,7 @@
                         $(document).ready(function () {
                             $("#zoom_10").ezPlus({
                                 easing: true
+                                // true is the same as 16; try 5 or 20
                             });
 
                         });

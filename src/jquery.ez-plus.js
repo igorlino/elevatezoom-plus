@@ -1095,6 +1095,10 @@ if (typeof Object.create !== 'function') {
                     if (!self.yp) {
                         self.yp = 0;
                     }
+                    var interval = 16;
+                    if (Number.isInteger(parseInt(self.options.easing))){
+                      interval = parseInt(self.options.easing);
+                    }
                     //if loop not already started, then run it
                     if (!self.loop) {
                         self.loop = setInterval(function () {
@@ -1190,7 +1194,7 @@ if (typeof Object.create !== 'function') {
 
                                 self.zoomWindow.css('background-position', self.xp + 'px ' + self.yp + 'px');
                             }
-                        }, 16);
+                        }, interval);
                     }
                 }
                 else {
