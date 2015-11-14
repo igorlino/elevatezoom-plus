@@ -848,22 +848,26 @@ if (typeof Object.create !== 'function') {
             var self = this;
             if (change === 'show') {
                 if (!self.isLensActive) {
-                    if (self.options.lensFadeIn && self.zoomLens) {
-                        self.zoomLens.stop(true, true, false).fadeIn(self.options.lensFadeIn);
-                    }
-                    else {
-                        self.zoomLens.show();
+                    if (self.zoomLens) {
+                        if (self.options.lensFadeIn) {
+                            self.zoomLens.stop(true, true, false).fadeIn(self.options.lensFadeIn);
+                        }
+                        else {
+                            self.zoomLens.show();
+                        }
                     }
                     self.isLensActive = true;
                 }
             }
             if (change === 'hide') {
                 if (self.isLensActive) {
-                    if (self.options.lensFadeOut) {
-                        self.zoomLens.stop(true, true).fadeOut(self.options.lensFadeOut);
-                    }
-                    else {
-                        self.zoomLens.hide();
+                    if (self.zoomLens) {
+                        if (self.options.lensFadeOut) {
+                            self.zoomLens.stop(true, true).fadeOut(self.options.lensFadeOut);
+                        }
+                        else {
+                            self.zoomLens.hide();
+                        }
                     }
                     self.isLensActive = false;
                 }
