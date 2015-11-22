@@ -514,10 +514,16 @@ if (typeof Object.create !== 'function') {
                     e.stopPropagation();
                     e.preventDefault();
 
+                    if (theEvent == 0) {
+                      // fixes last event inversion bug
+                      return false;
+                    }
+
                     if (theEvent / 120 > 0) {
+                        var nextZoomLevel = parseFloat(self.currentZoomLevel) - self.options.scrollZoomIncrement;
                         //scrolling up
-                        if (self.currentZoomLevel >= self.minZoomLevel) {
-                            self.changeZoomLevel(self.currentZoomLevel - self.options.scrollZoomIncrement);
+                        if (nextZoomLevel >= parseFloat(self.minZoomLevel)) {
+                            self.changeZoomLevel(nextZoomLevel);
                         }
                     }
                     else {
@@ -525,14 +531,16 @@ if (typeof Object.create !== 'function') {
 
                         //Check if it has to maintain original zoom window aspect ratio or not
                         if ((!self.fullheight && !self.fullwidth) || !self.options.mantainZoomAspectRatio) {
+                            var nextZoomLevel = parseFloat(self.currentZoomLevel) + self.options.scrollZoomIncrement;
+
                             if (self.options.maxZoomLevel) {
-                                if (self.currentZoomLevel <= self.options.maxZoomLevel) {
-                                    self.changeZoomLevel(parseFloat(self.currentZoomLevel) + self.options.scrollZoomIncrement);
+                                if (nextZoomLevel <= self.options.maxZoomLevel) {
+                                    self.changeZoomLevel(nextZoomLevel);
                                 }
                             }
                             else {
                                 //andy
-                                self.changeZoomLevel(parseFloat(self.currentZoomLevel) + self.options.scrollZoomIncrement);
+                                self.changeZoomLevel(nextZoomLevel);
                             }
                         }
                     }
