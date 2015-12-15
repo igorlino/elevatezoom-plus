@@ -107,18 +107,26 @@ if (typeof Object.create !== 'function') {
             var self = this;
 
             setTimeout(function () {
-                self.fetch(self.imageSrc);
+                self.fetch(self.imageSrc, self.$elem, self.options.minZoomLevel);
 
             }, length || self.options.refresh);
         },
-        fetch: function (imgsrc) {
+        fetch: function (imgsrc, element, minZoom) {
             //get the image
             var self = this;
             var newImg = new Image();
             newImg.onload = function () {
                 //set the large image dimensions - used to calculte ratio's
-                self.largeWidth = newImg.width;
-                self.largeHeight = newImg.height;
+				if (newImg.width/element.width() <= minZoom){
+					self.largeWidth = element.width()*minZoom;
+				} else {
+				    self.largeWidth = newImg.width;
+				}
+				if (newImg.width/element.height() <= minZoom){
+					self.largeHeight = element.height()*minZoom;
+				} else {
+				    self.largeHeight = newImg.height;
+				}
                 //once image is loaded start the calls
                 self.startZoom();
                 self.currentImage = self.imageSrc;
@@ -1877,7 +1885,7 @@ if (typeof Object.create !== 'function') {
         // allow to continue zooming out, so it keeps retrocompatibility.
         mantainZoomAspectRatio: false,
         maxZoomLevel: false,
-        minZoomLevel: false,
+        minZoomLevel: 1.01,
 
         onComplete: $.noop,
         onDestroy: $.noop,
