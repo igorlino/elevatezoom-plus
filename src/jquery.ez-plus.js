@@ -425,7 +425,7 @@ if (typeof Object.create !== 'function') {
 
             });
 
-            self.zoomContainer.bind('click.ezpspace', self.options.onImageClick);
+            self.zoomContainer.bind('click.ezpspace touchstart.ezpspace', self.options.onImageClick);
 
             self.zoomContainer.bind('mousemove.ezpspace', function (e) {
                 if (self.overWindow === false) {
