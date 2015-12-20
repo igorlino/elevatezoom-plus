@@ -117,16 +117,16 @@ if (typeof Object.create !== 'function') {
             var newImg = new Image();
             newImg.onload = function () {
                 //set the large image dimensions - used to calculte ratio's
-				if (newImg.width/element.width() <= minZoom){
-					self.largeWidth = element.width()*minZoom;
-				} else {
-				    self.largeWidth = newImg.width;
-				}
-				if (newImg.width/element.height() <= minZoom){
-					self.largeHeight = element.height()*minZoom;
-				} else {
-				    self.largeHeight = newImg.height;
-				}
+                if (newImg.width / element.width() <= minZoom) {
+                    self.largeWidth = element.width() * minZoom;
+                } else {
+                    self.largeWidth = newImg.width;
+                }
+                if (newImg.width / element.height() <= minZoom) {
+                    self.largeHeight = element.height() * minZoom;
+                } else {
+                    self.largeHeight = newImg.height;
+                }
                 //once image is loaded start the calls
                 self.startZoom();
                 self.currentImage = self.imageSrc;
@@ -289,8 +289,8 @@ if (typeof Object.create !== 'function') {
                     'height:' + self.nzHeight + 'px;' + '' +
                     'width:' + self.nzWidth + 'px;' +
                     'z-index:' + self.options.zIndex + '"></div>');
-            if (self.$elem.attr("id")) {
-                self.zoomContainer.attr("id", self.$elem.attr("id") + "-zoomContainer");
+            if (self.$elem.attr('id')) {
+                self.zoomContainer.attr('id', self.$elem.attr('id') + '-zoomContainer');
             }
             $(self.options.zoomContainerAppendTo).append(self.zoomContainer);
 
@@ -523,8 +523,8 @@ if (typeof Object.create !== 'function') {
                     e.preventDefault();
 
                     if (theEvent == 0) {
-                      // fixes last event inversion bug
-                      return false;
+                        // fixes last event inversion bug
+                        return false;
                     }
 
                     if (theEvent / 120 > 0) {
@@ -1116,8 +1116,8 @@ if (typeof Object.create !== 'function') {
                         self.yp = 0;
                     }
                     var interval = 16;
-                    if (Number.isInteger(parseInt(self.options.easing))){
-                      interval = parseInt(self.options.easing);
+                    if (Number.isInteger(parseInt(self.options.easing))) {
+                        interval = parseInt(self.options.easing);
                     }
                     //if loop not already started, then run it
                     if (!self.loop) {

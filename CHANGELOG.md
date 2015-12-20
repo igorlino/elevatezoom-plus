@@ -1,3 +1,9 @@
+<a name="1.1.18"></a>
+
+# 1.1.18 (2015-20-Dec)
+
+- Set minZoomLevel to 1.01, that helps to zoom small images.
+
 <a name="1.1.2"></a>
 
 # 1.1.2 (2015-01-June)
