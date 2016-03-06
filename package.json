@@ -29,7 +29,7 @@
     "homepage": "http://igorlino.github.io/elevatezoom-plus/",
     "docs": "http://igorlino.github.io/elevatezoom-plus/examples",
     "demo": "http://igorlino.github.io/elevatezoom-plus/examples",
-    "dependencies": {
+    "peerDependencies": {
         "jquery": ">=2.1.4"
     },
     "devDependencies": {
