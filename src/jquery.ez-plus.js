@@ -122,7 +122,7 @@ if (typeof Object.create !== 'function') {
                 } else {
                     self.largeWidth = newImg.width;
                 }
-                if (newImg.width / element.height() <= minZoom) {
+                if (newImg.height / element.height() <= minZoom) {
                     self.largeHeight = element.height() * minZoom;
                 } else {
                     self.largeHeight = newImg.height;
