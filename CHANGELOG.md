@@ -1,3 +1,9 @@
+<a name="1.1.20"></a>
+
+# 1.1.20 (2016-28-April)
+
+- Fix for bug in the zoom calculation for images with greater width.
+
 <a name="1.1.19"></a>
 
 # 1.1.19 (2016-23-March)

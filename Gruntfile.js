@@ -50,7 +50,7 @@ module.exports = function (grunt) {
         // Minify definitions
         uglify: {
             my_target: {
-                src: ['dist/jquery.ez-plus'],
+                src: 'src/jquery.ez-plus.js',
                 dest: 'dist/jquery.ez-plus.min.js'
             },
             options: {
