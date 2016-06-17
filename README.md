@@ -1,5 +1,6 @@
 [jQuery ElevateZoom Plus Plugin](http://igorlino.github.io/elevatezoom-plus/)
 ================================
+Current Version: 1.1.20
 
 [EZ Plus](http://igorlino.github.io/elevatezoom-plus/) is an up-to-date jQuery image zoom plug-in based on [EZ](https://github.com/elevateweb/elevatezoom)
 
