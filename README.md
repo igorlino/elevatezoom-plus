@@ -33,7 +33,7 @@ In a browser:
 
 ```html
 
-<script src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.20/dist/jquery.ez-plus.min.js"></script>
+<script src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.20/src/jquery.ez-plus.min.js"></script>
 ```
 
 ## Getting Started
