@@ -9,7 +9,7 @@
     },
     "license": "MIT",
     "main": [
-        "dist/jquery.ez-plus.js",
+        "src/jquery.ez-plus.js",
         "css/jquery.ez-plus.css"
     ],
     "ignore": [
