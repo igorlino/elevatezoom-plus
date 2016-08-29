@@ -1116,7 +1116,7 @@ if (typeof Object.create !== 'function') {
                         self.yp = 0;
                     }
                     var interval = 16;
-                    if (Number.isInteger(parseInt(self.options.easing))) {
+                    if ($.isNumeric(parseInt(self.options.easing))) {
                         interval = parseInt(self.options.easing);
                     }
                     //if loop not already started, then run it
