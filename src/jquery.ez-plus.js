@@ -1808,6 +1808,7 @@ if (typeof Object.create !== 'function') {
                 self.nzOffset = self.$elem.offset();
                 appendedPosition = $(self.options.zoomContainerAppendTo).offset();
                 self.nzOffset.top = self.$elem.offset().top - appendedPosition.top;
+                self.nzOffset.left = self.$elem.offset().left - appendedPosition.left;
 
             } else {
                 self.nzOffset = self.$elem.offset();
