@@ -7,7 +7,7 @@
  */
 
 /*
- *	jQuery ezPlus 1.1.20
+ *	jQuery ezPlus 1.1.21
  *	Demo's and documentation:
  *	http://igorlino.github.io/elevatezoom-plus/
  *
@@ -165,7 +165,7 @@ if (typeof Object.create !== 'function') {
             self.currentZoomLevel = self.options.zoomLevel;
 
             //get offset of the non zoomed image
-            self.nzOffset = self.$elem.offset();
+            self.updateOffset(self);
             //calculate the width ratio of the large/small image
             self.widthRatio = (self.largeWidth / self.currentZoomLevel) / self.nzWidth;
             self.heightRatio = (self.largeHeight / self.currentZoomLevel) / self.nzHeight;
@@ -204,6 +204,7 @@ if (typeof Object.create !== 'function') {
                     'cursor:' + (self.options.cursor) + ';' +
                     'border: ' + String(self.options.borderSize) + 'px solid ' + self.options.borderColour + ';' +
                     'background-repeat: no-repeat;' +
+                    'zindex:' + self.options.zIndex +';'+
                     'position: absolute;';
             }
 
@@ -618,7 +619,7 @@ if (typeof Object.create !== 'function') {
             //this can be caused by other on page elements
             self.nzHeight = self.$elem.height();
             self.nzWidth = self.$elem.width();
-            self.nzOffset = self.$elem.offset();
+            self.updateOffset(self);
 
             if (self.options.tint && self.options.zoomType !== 'inner') {
                 self.zoomTint.css({
@@ -1116,7 +1117,7 @@ if (typeof Object.create !== 'function') {
                         self.yp = 0;
                     }
                     var interval = 16;
-                    if ($.isNumeric(parseInt(self.options.easing))) {
+                    if (Number.isInteger(parseInt(self.options.easing))) {
                         interval = parseInt(self.options.easing);
                     }
                     //if loop not already started, then run it
@@ -1264,7 +1265,7 @@ if (typeof Object.create !== 'function') {
             var self = this;
             var zoomLensWidth = self.zoomLens.width();
             var zoomLensHeight = self.zoomLens.height();
-            self.nzOffset = self.$elem.offset();
+            self.updateOffset(self);
             self.tintpos = String(((e.pageX - self.nzOffset.left) - (zoomLensWidth / 2)) * (-1));
             self.tintposy = String(((e.pageY - self.nzOffset.top) - zoomLensHeight / 2) * (-1));
             if (self.Etoppos) {
@@ -1527,7 +1528,7 @@ if (typeof Object.create !== 'function') {
                 self.spinner.hide();
             }
 
-            self.nzOffset = self.$elem.offset();
+            self.updateOffset(self);
             self.nzWidth = self.$elem.width();
             self.nzHeight = self.$elem.height();
 
@@ -1800,6 +1801,16 @@ if (typeof Object.create !== 'function') {
             }
             if (self.zoomTint) {
                 self.zoomTint.hide();
+            }
+        },
+        updateOffset: function (self) {
+            if (self.options.zoomContainerAppendTo != 'body') {
+                self.nzOffset = self.$elem.offset();
+                appendedPosition = $(self.options.zoomContainerAppendTo).offset();
+                self.nzOffset.top = self.$elem.offset().top - appendedPosition.top;
+
+            } else {
+                self.nzOffset = self.$elem.offset();
             }
         },
 
