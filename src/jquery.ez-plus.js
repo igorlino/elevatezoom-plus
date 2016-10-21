@@ -45,7 +45,7 @@ if (typeof Object.create !== 'function') {
 
             //TINT OVERRIDE SETTINGS
             if (self.options.tint) {
-                self.options.lensColour = 'none'; //colour of the lens background
+                self.options.lensColour = 'transparent'; //colour of the lens background
                 self.options.lensOpacity = '1'; //opacity of the lens
             }
             //INNER OVERRIDE SETTINGS
@@ -171,19 +171,19 @@ if (typeof Object.create !== 'function') {
             self.heightRatio = (self.largeHeight / self.currentZoomLevel) / self.nzHeight;
 
             function getWindowZoomStyle() {
-                return 'overflow: hidden;' +
-                    'background-position: 0px 0px;' +
-                    'text-align: center;' +
-                    'background-color: ' + String(self.options.zoomWindowBgColour) + ';' +
-                    'width: ' + String(self.options.zoomWindowWidth) + 'px;' +
-                    'height: ' + String(self.options.zoomWindowHeight) + 'px;' +
+                return 'display: none;' +
+                    'position: absolute;' +
                     'float: left;' +
-                    'background-size: ' + self.largeWidth / self.currentZoomLevel + 'px ' + self.largeHeight / self.currentZoomLevel + 'px;' +
-                    'display: none;' +
-                    'z-index: 100;' +
+                    'height: ' + String(self.options.zoomWindowHeight) + 'px;' +
+                    'width: ' + String(self.options.zoomWindowWidth) + 'px;' +
+                    'text-align: center;' +
                     'border: ' + String(self.options.borderSize) + 'px solid ' + self.options.borderColour + ';' +
+                    'background-size: ' + self.largeWidth / self.currentZoomLevel + 'px ' + self.largeHeight / self.currentZoomLevel + 'px;' +
+                    'background-position: 0px 0px;' +
                     'background-repeat: no-repeat;' +
-                    'position: absolute;';
+                    'background-color: ' + String(self.options.zoomWindowBgColour) + ';' +
+                    'overflow: hidden;' +
+                    'z-index: 100;';
             }
 
             //if window zoom
@@ -195,18 +195,18 @@ if (typeof Object.create !== 'function') {
                 //has a border been put on the image? Lets cater for this
                 var borderWidth = self.$elem.css('border-left-width');
 
-                return 'overflow: hidden;' +
-                    'margin-left: ' + String(borderWidth) + ';' +
-                    'margin-top: ' + String(borderWidth) + ';' +
-                    'background-position: 0px 0px;' +
-                    'width: ' + String(self.nzWidth) + 'px;' +
-                    'height: ' + String(self.nzHeight) + 'px;' +
+                return 'display: none;' +
+                    'position: absolute;' +
                     'float: left;' +
-                    'display: none;' +
-                    'cursor:' + (self.options.cursor) + ';' +
+                    'height: ' + String(self.nzHeight) + 'px;' +
+                    'width: ' + String(self.nzWidth) + 'px;' +
+                    'margin-top: ' + String(borderWidth) + ';' +
+                    'margin-left: ' + String(borderWidth) + ';' +
                     'border: ' + String(self.options.borderSize) + 'px solid ' + self.options.borderColour + ';' +
+                    'background-position: 0px 0px;' +
                     'background-repeat: no-repeat;' +
-                    'position: absolute;';
+                    'cursor:' + (self.options.cursor) + ';' +
+                    'overflow: hidden;';
             }
 
             //if inner  zoom
@@ -230,23 +230,21 @@ if (typeof Object.create !== 'function') {
                     self.lensWidth = String(self.options.zoomWindowWidth / self.widthRatio);
                 }
 
-                return 'background-position: 0px 0px;' +
-                    'width: ' + String((self.options.zoomWindowWidth) / self.widthRatio) + 'px;' +
-                    'height: ' + String((self.options.zoomWindowHeight) / self.heightRatio) + 'px;' +
+                return 'display: none;' +
+                    'position: absolute;' +
                     'float: right;' +
-                    'display: none;' +
-                    'overflow: hidden;' +
-                    'z-index: 999;' +
+                    'height: ' + self.lensHeight + 'px;' +
+                    'width: ' + self.lensWidth + 'px;' +
+                    'border: ' + (self.options.lensBorderSize) + 'px' + ' solid ' + (self.options.lensBorderColour) + ';' +
+                    'background-position: 0px 0px;' +
+                    'background-repeat: no-repeat;' +
+                    'background-color: ' + (self.options.lensColour) + ';' +
                     'opacity: ' + (self.options.lensOpacity) + ';' +
                     'filter: alpha(opacity = ' + (self.options.lensOpacity * 100) + ');' +
                     'zoom: 1;' +
-                    'width: ' + self.lensWidth + 'px;' +
-                    'height: ' + self.lensHeight + 'px;' +
-                    'background-color: ' + (self.options.lensColour) + ';' +
-                    'cursor: ' + (self.options.cursor) + ';' +
-                    'border: ' + (self.options.lensBorderSize) + 'px' + ' solid ' + (self.options.lensBorderColour) + ';' +
-                    'background-repeat: no-repeat;' +
-                    'position: absolute;';
+                    'cursor:' + (self.options.cursor) + ';' +
+                    'z-index: 999;' +
+                    'overflow: hidden;';
             }
 
             //lens style for window zoom
@@ -258,35 +256,33 @@ if (typeof Object.create !== 'function') {
             self.tintStyle =
                 'display: block;' +
                 'position: absolute;' +
+                'height: ' + self.nzHeight + 'px;' +
+                'width: ' + self.nzWidth + 'px;' +
                 'background-color: ' + self.options.tintColour + ';' +
                 'filter: alpha(opacity=0);' +
-                'opacity: 0;' +
-                'width: ' + self.nzWidth + 'px;' +
-                'height: ' + self.nzHeight + 'px;';
+                'opacity: 0;';
 
             //lens style for lens zoom with optional round for modern browsers
             self.lensRound = '';
 
             if (self.options.zoomType === 'lens') {
                 self.lensStyle =
-                    'background-position: 0px 0px;' +
-                    'background-color: ' + self.options.lensColour + ";" +
-                    'float: left;' +
                     'display: none;' +
-                    'border: ' + String(self.options.borderSize) + 'px solid ' + self.options.borderColour + ';' +
-                    'width:' + String(self.options.lensSize) + 'px;' +
+                    'position: absolute;' +
+                    'float: left;' +
                     'height:' + String(self.options.lensSize) + 'px;' +
+                    'width:' + String(self.options.lensSize) + 'px;' +
+                    'border: ' + String(self.options.borderSize) + 'px solid ' + self.options.borderColour + ';' +
+                    'background-position: 0px 0px;' +
                     'background-repeat: no-repeat;' +
-                    'position: absolute;';
+                    'background-color: ' + self.options.lensColour + ";" +
+                    'cursor:' + (self.options.cursor) + ';';
             }
 
             //does not round in all browsers
             if (self.options.lensShape === 'round') {
                 self.lensRound =
-                    'border-top-left-radius: ' + String(self.options.lensSize / 2 + self.options.borderSize) + 'px;' +
-                    'border-top-right-radius: ' + String(self.options.lensSize / 2 + self.options.borderSize) + 'px;' +
-                    'border-bottom-left-radius: ' + String(self.options.lensSize / 2 + self.options.borderSize) + 'px;' +
-                    'border-bottom-right-radius: ' + String(self.options.lensSize / 2 + self.options.borderSize) + 'px;';
+                    'border-radius: ' + String(self.options.lensSize / 2 + self.options.borderSize) + 'px;';
             }
 
             //create the div's                                                + ""
@@ -294,14 +290,14 @@ if (typeof Object.create !== 'function') {
 
             self.zoomContainer =
                 $('<div class="zoomContainer" ' +
-                    'uuid="' + self.options.zoomId + '"' +
-                    'style="' +
-                    'position: absolute;' +
-                    'left: ' + self.nzOffset.left + 'px;' +
-                    'top: ' + self.nzOffset.top + 'px;' +
-                    'height: ' + self.nzHeight + 'px;' + '' +
-                    'width: ' + self.nzWidth + 'px;' +
-                    'z-index: ' + self.options.zIndex + '"></div>');
+                'uuid="' + self.options.zoomId + '"' +
+                'style="' +
+                'position: absolute;' +
+                'top: ' + self.nzOffset.top + 'px;' +
+                'left: ' + self.nzOffset.left + 'px;' +
+                'height: ' + self.nzHeight + 'px;' + '' +
+                'width: ' + self.nzWidth + 'px;' +
+                'z-index: ' + self.options.zIndex + '"></div>');
             if (self.$elem.attr('id')) {
                 self.zoomContainer.attr('id', self.$elem.attr('id') + '-zoomContainer');
             }
@@ -329,23 +325,27 @@ if (typeof Object.create !== 'function') {
                     //if tint enabled - set an image to show over the tint
 
                     self.zoomTintImage = $('<img style="' +
-                        'position: absolute; left: 0px; top: 0px; max-width: none; ' +
-                        'width: ' + self.nzWidth + 'px; ' +
-                        'height: ' + self.nzHeight + 'px;" ' +
-                        'src="' + self.imageSrc + '">')
+                    'position: absolute;' +
+                    'top: 0px;' +
+                    'left: 0px;' +
+                    'height: ' + self.nzHeight + 'px;" ' +
+                    'width: ' + self.nzWidth + 'px; ' +
+                    'max-width: none; ' +
+                    'src="' + self.imageSrc + '">')
                         .appendTo(self.zoomLens)
                         .click(function () {
-
                             self.$elem.trigger('click');
                         });
                 }
             }
 
-            var targetZoomContainer = isNaN(self.options.zoomWindowPosition) ? 'body' : self.zoomContainer;
             //create zoom window
-            self.zoomWindow = $('<div style="z-index:999;' +
-                'left:' + (self.windowOffsetLeft) + 'px;' +
-                'top:' + (self.windowOffsetTop) + 'px;' + self.zoomWindowStyle + '" class="zoomWindow">&nbsp;</div>')
+            var targetZoomContainer = isNaN(self.options.zoomWindowPosition) ? 'body' : self.zoomContainer;
+            self.zoomWindow = $('<div style="' +
+            'z-index: 999;' +
+            'top: ' + (self.windowOffsetTop) + 'px;' +
+            'left: ' + (self.windowOffsetLeft) + 'px;' +
+            self.zoomWindowStyle + '" class="zoomWindow">&nbsp;</div>')
                 .appendTo(targetZoomContainer).click(function () {
                     self.$elem.trigger('click');
                 });
