@@ -172,13 +172,15 @@ if (typeof Object.create !== 'function') {
 
             function getWindowZoomStyle() {
                 return 'overflow: hidden;' +
-                    'background-position: 0px 0px;text-align:center;' +
+                    'background-position: 0px 0px;' +
+                    'text-align: center;' +
                     'background-color: ' + String(self.options.zoomWindowBgColour) + ';' +
                     'width: ' + String(self.options.zoomWindowWidth) + 'px;' +
                     'height: ' + String(self.options.zoomWindowHeight) + 'px;' +
                     'float: left;' +
                     'background-size: ' + self.largeWidth / self.currentZoomLevel + 'px ' + self.largeHeight / self.currentZoomLevel + 'px;' +
-                    'display: none;z-index:100;' +
+                    'display: none;' +
+                    'z-index: 100;' +
                     'border: ' + String(self.options.borderSize) + 'px solid ' + self.options.borderColour + ';' +
                     'background-repeat: no-repeat;' +
                     'position: absolute;';
@@ -229,18 +231,23 @@ if (typeof Object.create !== 'function') {
                     self.lensWidth = String(self.options.zoomWindowWidth / self.widthRatio);
                 }
 
-                return 'background-position: 0px 0px;width: ' + String((self.options.zoomWindowWidth) / self.widthRatio) + 'px;' +
-                    'height: ' + String((self.options.zoomWindowHeight) / self.heightRatio) +
-                    'px;float: right;display: none;' +
+                return 'background-position: 0px 0px;' +
+                    'width: ' + String((self.options.zoomWindowWidth) / self.widthRatio) + 'px;' +
+                    'height: ' + String((self.options.zoomWindowHeight) / self.heightRatio) + 'px;' +
+                    'float: right;' +
+                    'display: none;' +
                     'overflow: hidden;' +
                     'z-index: 999;' +
-                    'opacity:' + (self.options.lensOpacity) + ';filter: alpha(opacity = ' + (self.options.lensOpacity * 100) + '); zoom:1;' +
-                    'width:' + self.lensWidth + 'px;' +
-                    'height:' + self.lensHeight + 'px;' +
-                    'background-color:' + (self.options.lensColour) + ';' +
-                    'cursor:' + (self.options.cursor) + ';' +
-                    'border: ' + (self.options.lensBorderSize) + 'px' +
-                    ' solid ' + (self.options.lensBorderColour) + ';background-repeat: no-repeat;position: absolute;';
+                    'opacity: ' + (self.options.lensOpacity) + ';' +
+                    'filter: alpha(opacity = ' + (self.options.lensOpacity * 100) + ');' +
+                    'zoom: 1;' +
+                    'width: ' + self.lensWidth + 'px;' +
+                    'height: ' + self.lensHeight + 'px;' +
+                    'background-color: ' + (self.options.lensColour) + ';' +
+                    'cursor: ' + (self.options.cursor) + ';' +
+                    'border: ' + (self.options.lensBorderSize) + 'px' + ' solid ' + (self.options.lensBorderColour) + ';' +
+                    'background-repeat: no-repeat;' +
+                    'position: absolute;';
             }
 
             //lens style for window zoom
@@ -249,10 +256,11 @@ if (typeof Object.create !== 'function') {
             }
 
             //tint style
-            self.tintStyle = 'display: block;' +
+            self.tintStyle =
+                'display: block;' +
                 'position: absolute;' +
                 'background-color: ' + self.options.tintColour + ';' +
-                'filter:alpha(opacity=0);' +
+                'filter: alpha(opacity=0);' +
                 'opacity: 0;' +
                 'width: ' + self.nzWidth + 'px;' +
                 'height: ' + self.nzHeight + 'px;';
@@ -261,17 +269,22 @@ if (typeof Object.create !== 'function') {
             self.lensRound = '';
 
             if (self.options.zoomType === 'lens') {
-                self.lensStyle = 'background-position: 0px 0px;' +
-                    'float: left;display: none;' +
+                self.lensStyle =
+                    'background-position: 0px 0px;' +
+                    'background-color: ' + self.options.lensColour + ";" +
+                    'float: left;' +
+                    'display: none;' +
                     'border: ' + String(self.options.borderSize) + 'px solid ' + self.options.borderColour + ';' +
                     'width:' + String(self.options.lensSize) + 'px;' +
                     'height:' + String(self.options.lensSize) + 'px;' +
-                    'background-repeat: no-repeat;position: absolute;';
+                    'background-repeat: no-repeat;' +
+                    'position: absolute;';
             }
 
             //does not round in all browsers
             if (self.options.lensShape === 'round') {
-                self.lensRound = 'border-top-left-radius: ' + String(self.options.lensSize / 2 + self.options.borderSize) + 'px;' +
+                self.lensRound =
+                    'border-top-left-radius: ' + String(self.options.lensSize / 2 + self.options.borderSize) + 'px;' +
                     'border-top-right-radius: ' + String(self.options.lensSize / 2 + self.options.borderSize) + 'px;' +
                     'border-bottom-left-radius: ' + String(self.options.lensSize / 2 + self.options.borderSize) + 'px;' +
                     'border-bottom-right-radius: ' + String(self.options.lensSize / 2 + self.options.borderSize) + 'px;';
@@ -284,12 +297,12 @@ if (typeof Object.create !== 'function') {
                 $('<div class="zoomContainer" ' +
                     'uuid="' + self.options.zoomId + '"' +
                     'style="' +
-                    'position:absolute;' +
-                    'left:' + self.nzOffset.left + 'px;' +
-                    'top:' + self.nzOffset.top + 'px;' +
-                    'height:' + self.nzHeight + 'px;' + '' +
-                    'width:' + self.nzWidth + 'px;' +
-                    'z-index:' + self.options.zIndex + '"></div>');
+                    'position: absolute;' +
+                    'left: ' + self.nzOffset.left + 'px;' +
+                    'top: ' + self.nzOffset.top + 'px;' +
+                    'height: ' + self.nzHeight + 'px;' + '' +
+                    'width: ' + self.nzWidth + 'px;' +
+                    'z-index: ' + self.options.zIndex + '"></div>');
             if (self.$elem.attr('id')) {
                 self.zoomContainer.attr('id', self.$elem.attr('id') + '-zoomContainer');
             }
@@ -364,10 +377,7 @@ if (typeof Object.create !== 'function') {
                     self.setPosition(touch);
                 });
                 self.zoomContainer.bind('touchmove.ezpspace', function (e) {
-                    if (self.options.zoomType === 'inner') {
-                        self.showHideWindow('show');
-
-                    }
+                    self.setElements('show');
                     e.preventDefault();
                     var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
                     self.setPosition(touch);
