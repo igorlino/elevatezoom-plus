@@ -53,6 +53,11 @@ if (typeof Object.create !== 'function') {
                 self.options.showLens = false;
             }
 
+            // LENS OVERRIDE SETTINGS
+            if (self.options.zoomType === 'lens') {
+                self.options.zoomWindowWidth = 0;
+            }
+
             //UUID WHEN MISSING IDENTIFIER
             if (self.options.zoomId === -1) {
                 self.options.zoomId = generateUUID();
@@ -331,7 +336,7 @@ if (typeof Object.create !== 'function') {
                     'height: ' + self.nzHeight + 'px;" ' +
                     'width: ' + self.nzWidth + 'px; ' +
                     'max-width: none; ' +
-                    'src="' + self.imageSrc + '">')
+                    'src="' + self.$elem.attr('src') + '">')
                         .appendTo(self.zoomLens)
                         .click(function () {
                             self.$elem.trigger('click');
