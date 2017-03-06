@@ -1,3 +1,28 @@
+<a name="1.2.1"></a>
+
+# 1.2.1 (2017-03-March)
+
++ NPM: Fixes delayed version 
+
++ NPM: Add main property to package.json to support vanilla require statement
+
++ CORE: add a update left
+
++ CORE: use a function to change the offset in new container
+
++ CORE: added lens override for window width to 0 (default value can create unwanted scroll on mobile devices);
++ CORE: tint image src changed to thumbnail src instead of zoom image src
+
++ CORE: fixed lensColour tint override to 'transparent' instead of 'none';
++ CORE: style reformated and removed duplicate rules applied in getWindowLensStyle();
++ CORE: added missing cursor rule for lens type.
+
++ CORE: fixed lens and inner zoom not working for touchmove action;
++ CORE: added lensColour as background-color to lens style;
++ CORE: style rules reformat;
++ CORE: isInteger IE fix
+
+
 <a name="1.2.0"></a>
 
 # 1.2.0 (2016-24-August)
