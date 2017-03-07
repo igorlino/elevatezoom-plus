@@ -872,6 +872,7 @@ if (typeof Object.create !== 'function') {
                     else {
                         self.zoomWindow.hide();
                     }
+                    self.options.onHide(self);
                     self.isWindowActive = false;
                 }
             }
@@ -1920,6 +1921,7 @@ if (typeof Object.create !== 'function') {
         onImageSwap: $.noop,
         onImageSwapComplete: $.noop,
         onShow: $.noop,
+        onHide: $.noop,
         onZoomedImageLoaded: $.noop,
 
         preloading: 1, //by default, load all the images, if 0, then only load images after activated (PLACEHOLDER FOR NEXT VERSION)
