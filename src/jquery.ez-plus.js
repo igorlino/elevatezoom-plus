@@ -271,7 +271,7 @@ if (typeof Object.create !== 'function') {
             };
 
             //lens style for lens zoom with optional round for modern browsers
-            self.lensRound = '';
+            self.lensRound = {};
 
             if (self.options.zoomType === 'lens') {
                 self.lensStyle = {
