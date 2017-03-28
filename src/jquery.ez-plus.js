@@ -207,7 +207,7 @@ if (typeof Object.create !== 'function') {
                     'background-repeat: no-repeat;' +
                     'cursor:' + (self.options.cursor) + ';' +
                     'overflow: hidden;' +
-                    'zindex: ' + self.options.zIndex + '    ;'  ;
+                    'z-index: ' + self.options.zIndex + '    ;'  ;
             }
 
             //if inner  zoom
