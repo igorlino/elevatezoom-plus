@@ -201,21 +201,20 @@ if (typeof Object.create !== 'function') {
             function getInnerZoomStyle() {
                 //has a border been put on the image? Lets cater for this
                 var borderWidth = self.$elem.css('border-left-width');
-
-                return {
-                    display: 'none',
-                    position: 'absolute',
-                    height: self.nzHeight,
-                    width: self.nzWidth,
-                    marginTop: borderWidth,
-                    marginLeft: borderWidth,
-                    border: '' + self.options.borderSize + 'px solid ' + self.options.borderColour,
-                    backgroundPosition: '0px 0px',
-                    backgroundRepeat: 'no-repeat',
-                    cursor: self.options.cursor,
-                    overflow: 'hidden',
-                    zIndex: self.options.zIndex
-                };
+              
+                return 'display: none;' +
+                    'position: absolute;' +
+                    'float: left;' +
+                    'height: ' + String(self.nzHeight) + 'px;' +
+                    'width: ' + String(self.nzWidth) + 'px;' +
+                    'margin-top: ' + String(borderWidth) + ';' +
+                    'margin-left: ' + String(borderWidth) + ';' +
+                    'border: ' + String(self.options.borderSize) + 'px solid ' + self.options.borderColour + ';' +
+                    'background-position: 0px 0px;' +
+                    'background-repeat: no-repeat;' +
+                    'cursor:' + (self.options.cursor) + ';' +
+                    'overflow: hidden;' +
+                    'z-index: ' + self.options.zIndex + '    ;'  ;
             }
 
             //if inner  zoom
