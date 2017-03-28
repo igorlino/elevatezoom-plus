@@ -1,18 +1,14 @@
+// jscs:disable
 /* jshint -W071, -W074 */
-/* global jQuery:false */
-
-/* Disabled options are:
- * W071: This function has too many statements
- * W074: This function's cyclomatic complexity is too high
- */
-
+// jscs:enable
+/* globals jQuery */
 /*
- *	jQuery ezPlus 1.1.21
- *	Demo's and documentation:
- *	http://igorlino.github.io/elevatezoom-plus/
+ * jQuery ezPlus 1.1.21
+ * Demo's and documentation:
+ * http://igorlino.github.io/elevatezoom-plus/
  *
- *	licensed under MIT license.
- *	http://en.wikipedia.org/wiki/MIT_License
+ * licensed under MIT license.
+ * http://en.wikipedia.org/wiki/MIT_License
  *
  */
 
@@ -97,13 +93,12 @@ if (typeof Object.create !== 'function') {
                     return false;
                 }
             });
-
             function generateUUID() {
                 var d = new Date().getTime();
                 var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-                    var r = (d + Math.random() * 16) % 16 | 0;
-                    d = Math.floor(d / 16);
-                    return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+                    var r = (d + Math.random() * 16) % 16 | 0; // jshint ignore:line
+                    d = Math.floor(d / 16); // jshint ignore:line
+                    return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16); // jshint ignore:line
                 });
                 return uuid;
             }
@@ -212,7 +207,7 @@ if (typeof Object.create !== 'function') {
                     'background-repeat: no-repeat;' +
                     'cursor:' + (self.options.cursor) + ';' +
                     'overflow: hidden;' +
-                    'zindex: ' + self.options.zIndex + ";";
+                    'zindex: ' + self.options.zIndex + '    ;'  ;
             }
 
             //if inner  zoom
@@ -281,7 +276,7 @@ if (typeof Object.create !== 'function') {
                     'border: ' + String(self.options.borderSize) + 'px solid ' + self.options.borderColour + ';' +
                     'background-position: 0px 0px;' +
                     'background-repeat: no-repeat;' +
-                    'background-color: ' + self.options.lensColour + ";" +
+                    'background-color: ' + self.options.lensColour + ';' +
                     'cursor:' + (self.options.cursor) + ';';
             }
 
@@ -538,13 +533,13 @@ if (typeof Object.create !== 'function') {
                     e.stopPropagation();
                     e.preventDefault();
 
-                    if (theEvent == 0) {
+                    if (theEvent === 0) {
                         // fixes last event inversion bug
                         return false;
                     }
-
+                    var nextZoomLevel;
                     if (theEvent / 120 > 0) {
-                        var nextZoomLevel = parseFloat(self.currentZoomLevel) - self.options.scrollZoomIncrement;
+                        nextZoomLevel = parseFloat(self.currentZoomLevel) - self.options.scrollZoomIncrement;
                         //scrolling up
                         if (nextZoomLevel >= parseFloat(self.minZoomLevel)) {
                             self.changeZoomLevel(nextZoomLevel);
@@ -555,7 +550,7 @@ if (typeof Object.create !== 'function') {
 
                         //Check if it has to maintain original zoom window aspect ratio or not
                         if ((!self.fullheight && !self.fullwidth) || !self.options.mantainZoomAspectRatio) {
-                            var nextZoomLevel = parseFloat(self.currentZoomLevel) + self.options.scrollZoomIncrement;
+                            nextZoomLevel = parseFloat(self.currentZoomLevel) + self.options.scrollZoomIncrement;
 
                             if (self.options.maxZoomLevel) {
                                 if (nextZoomLevel <= self.options.maxZoomLevel) {
@@ -1820,9 +1815,9 @@ if (typeof Object.create !== 'function') {
             }
         },
         updateOffset: function (self) {
-            if (self.options.zoomContainerAppendTo != 'body') {
+            if (self.options.zoomContainerAppendTo !== 'body') {
                 self.nzOffset = self.$elem.offset();
-                appendedPosition = $(self.options.zoomContainerAppendTo).offset();
+                var appendedPosition = $(self.options.zoomContainerAppendTo).offset();
                 self.nzOffset.top = self.$elem.offset().top - appendedPosition.top;
                 self.nzOffset.left = self.$elem.offset().left - appendedPosition.left;
 
@@ -1955,4 +1950,4 @@ if (typeof Object.create !== 'function') {
         zIndex: 999
     };
 
-})(jQuery, window, document);
+})(window.jQuery, window, document);
