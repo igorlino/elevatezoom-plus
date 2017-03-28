@@ -298,7 +298,7 @@ if (typeof Object.create !== 'function') {
             //create the div's                                                + ""
             //self.zoomContainer = $('<div/>').addClass('zoomContainer').css({"position":"relative", "height":self.nzHeight, "width":self.nzWidth});
 
-            self.zoomContainer = $('<div class="zoomContainer" ' + 'uuid="' + self.options.zoomId + '"></div>');
+            self.zoomContainer = $('<div class="zoomContainer" ' + 'uuid="' + self.options.zoomId + '"/>');
             self.zoomContainer.css({
                 position: 'absolute',
                 top: self.nzOffset.top,
@@ -317,7 +317,7 @@ if (typeof Object.create !== 'function') {
                 self.zoomContainer.css('overflow', 'hidden');
             }
             if (self.options.zoomType !== 'inner') {
-                self.zoomLens = $('<div class="zoomLens" />')
+                self.zoomLens = $('<div class="zoomLens"/>')
                     .css($.extend({}, self.lensStyle, self.lensRound))
                     .appendTo(self.zoomContainer)
                     .click(function () {
@@ -325,7 +325,7 @@ if (typeof Object.create !== 'function') {
                     });
 
                 if (self.options.tint) {
-                    self.tintContainer = $('<div/ class="tintContainer">');
+                    self.tintContainer = $('<div class="tintContainer"/>');
                     self.zoomTint = $('<div class="zoomTint"/>').css(self.tintStyle);
 
                     self.zoomLens.wrap(self.tintContainer);
