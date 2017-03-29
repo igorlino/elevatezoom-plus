@@ -16,6 +16,14 @@ Current Version: 1.2.1
 - JQuery plug-in
 - AngularJS directive available: [angular-elevatezoom-plus](https://github.com/igorlino/angular-elevatezoom-plus)
 
+## Supported Browsers
+
+- Chrome
+- IE7+
+- Firefox
+- Edge
+- Safari
+
 ## Installation
 
 Via [Bower](http://bower.io/):
