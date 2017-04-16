@@ -26,7 +26,6 @@ if (typeof Object.create !== 'function') {
     var EZP = {
         init: function (options, elem) {
             var self = this;
-            var $galleries;
 
             self.elem = elem;
             self.$elem = $(elem);
@@ -68,12 +67,14 @@ if (typeof Object.create !== 'function') {
             self.refresh(1);
 
             //Create the image swap from the gallery
-            $galleries = $(self.options.gallery ? ('#' + self.options.gallery) : self.options.gallerySelector);
-            $galleries.on('click.zoom', self.options.galleryItem, function (e) {
+            var galleryEvent = self.options.galleryEvent + '.ezpspace';
+            galleryEvent += self.options.touchEnabled ? ' touchend.ezpspace' : '';
+            self.$galleries = $(self.options.gallery ? ('#' + self.options.gallery) : self.options.gallerySelector);
+            self.$galleries.on(galleryEvent, self.options.galleryItem, function (e) {
 
                 //Set a class on the currently active gallery image
                 if (self.options.galleryActiveClass) {
-                    $(self.options.galleryItem, $galleries).removeClass(self.options.galleryActiveClass);
+                    $(self.options.galleryItem, self.$galleries).removeClass(self.options.galleryActiveClass);
                     $(this).addClass(self.options.galleryActiveClass);
                 }
                 //stop any link on the a tag from working
@@ -584,7 +585,8 @@ if (typeof Object.create !== 'function') {
         },
         destroy: function () {
             var self = this;
-            self.$elem.off('ezpspace');
+            self.$elem.off('.ezpspace');
+            self.$galleries.off('.ezpspace');
             $(self.zoomContainer).remove();
             if (self.options.loadingIcon && !!self.spinner && !!self.spinner.length) {
                 self.spinner.remove();
@@ -1955,6 +1957,7 @@ if (typeof Object.create !== 'function') {
         galleryActiveClass: 'zoomGalleryActive',
         gallerySelector: false,
         galleryItem: 'a',
+        galleryEvent: 'click',
 
         imageCrossfade: false,
 
