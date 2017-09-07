@@ -1155,8 +1155,9 @@ if (typeof Object.create !== 'function') {
                         self.yp = 0;
                     }
                     var interval = 16;
-                    if (Number.isInteger(parseInt(self.options.easing))) {
-                        interval = parseInt(self.options.easing);
+                    var easingInterval = parseInt(self.options.easing);
+                    if (typeof easingInterval === 'number' && isFinite(easingInterval) && Math.floor(easingInterval) === easingInterval) {
+                        interval = easingInterval;
                     }
                     //if loop not already started, then run it
                     if (!self.loop) {
