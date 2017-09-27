@@ -299,7 +299,7 @@ if (typeof Object.create !== 'function') {
             //create the div's                                                + ""
             //self.zoomContainer = $('<div/>').addClass('zoomContainer').css({"position":"relative", "height":self.nzHeight, "width":self.nzWidth});
 
-            self.zoomContainer = $('<div class="zoomContainer" ' + 'uuid="' + self.options.zoomId + '"/>');
+            self.zoomContainer = $('<div class="' + self.options.container + '" ' + 'uuid="' + self.options.zoomId + '"/>');
             self.zoomContainer.css({
                 position: 'absolute',
                 top: self.nzOffset.top,
@@ -309,7 +309,7 @@ if (typeof Object.create !== 'function') {
                 zIndex: self.options.zIndex
             });
             if (self.$elem.attr('id')) {
-                self.zoomContainer.attr('id', self.$elem.attr('id') + '-zoomContainer');
+                self.zoomContainer.attr('id', self.$elem.attr('id') + '-' + self.options.container);
             }
             $(self.options.zoomContainerAppendTo).append(self.zoomContainer);
 
@@ -1941,6 +1941,7 @@ if (typeof Object.create !== 'function') {
     };
 
     $.fn.ezPlus.options = {
+        container: 'ZoomContainer',
         attrImageZoomSrc: 'zoom-image', // attribute to plugin use for zoom
         borderColour: '#888',
         borderSize: 4,
