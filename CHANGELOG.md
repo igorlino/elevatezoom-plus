@@ -1,3 +1,14 @@
+<a name="1.2.2"></a>
+
+# 1.2.2 (2017-27-November)
+
++ CORE: lots and lots of code quality improvements  (thnxs Gregor Adams !!!)
++ FEATURE: add option to gallery swap event (thnxs shrpne)
++ FEATURE: added custom zoomContainer (thnxs David Rosendo)
++ FIX: properly remove event handlers on destroy (thxs shrpne)
++ FIX: IE 11 compatibility (thnxs Michael Thessel)
+
+
 <a name="1.2.1"></a>
 
 # 1.2.1 (2017-03-March)
