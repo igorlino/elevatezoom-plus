@@ -369,6 +369,7 @@ if (typeof Object.create !== 'function') {
             self.zoomWindow.wrap(self.zoomWindowContainer);
 
             if (self.options.zoomType === 'lens') {
+                self.zoomContainer.css('display', 'none');
                 self.zoomLens.css({
                     backgroundImage: 'url("' + self.imageSrc + '")'
                 });
@@ -611,6 +612,7 @@ if (typeof Object.create !== 'function') {
                         self.showHideWindow('show');
                     }
                     if (self.options.showLens) {
+                        self.showHideZoomContainer('show');
                         self.showHideLens('show');
                     }
                     if (self.options.tint && self.options.zoomType !== 'inner') {
@@ -627,6 +629,7 @@ if (typeof Object.create !== 'function') {
                     self.showHideWindow('hide');
                 }
                 if (self.options.showLens) {
+                    self.showHideZoomContainer('hide');
                     self.showHideLens('hide');
                 }
                 if (self.options.tint) {
