@@ -641,7 +641,7 @@ if (typeof Object.create !== 'function') {
 
             var self = this;
 
-            if (!self.options.zoomEnabled) {
+            if (!self.options.zoomEnabled || e === undefined) {
                 return false;
             }
 
