@@ -60,5 +60,11 @@ Include jQuery and the plug-in on a page. Include your images and initialise the
 
 For more information on how to setup and customise, [check the examples](http://igorlino.github.io/elevatezoom-plus/).
 
+## Do you have a question?
+
+The issue tracker is for **issues**, in other words, bugs and suggestions.
+If you have a *question*, please use [Stack Overflow](http://stackoverflow.com/questions/tagged/elevatezoom), your favorite search engine, or other resources.
+Due to increased similar type of questions, we can no longer answer questions in the issue tracker.
+
 ## License
 Licensed under MIT license.
