@@ -32,7 +32,7 @@ if (typeof Object.create !== 'function') {
 
             self.options = $.extend({}, $.fn.ezPlus.options, self.responsiveConfig(options || {}));
 
-            self.imageSrc = self.$elem.attr('data-'+self.options.attrImageZoomSrc) ? self.$elem.attr('data-'+self.options.attrImageZoomSrc) : self.$elem.attr('src');: self.$elem.attr('src');
+            self.imageSrc = self.$elem.attr('data-'+self.options.attrImageZoomSrc) ? self.$elem.attr('data-'+self.options.attrImageZoomSrc) : self.$elem.attr('src');
 
             if (!self.options.enabled) {
                 return;
