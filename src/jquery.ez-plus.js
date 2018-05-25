@@ -3,7 +3,7 @@
 // jscs:enable
 /* globals jQuery */
 /*
- * jQuery ezPlus 1.1.21
+ * jQuery ezPlus 1.1.22
  * Demo's and documentation:
  * http://igorlino.github.io/elevatezoom-plus/
  *
@@ -26,14 +26,14 @@ if (typeof Object.create !== 'function') {
     var EZP = {
         init: function (options, elem) {
             var self = this;
-            var $galleries;
 
             self.elem = elem;
             self.$elem = $(elem);
 
             self.options = $.extend({}, $.fn.ezPlus.options, self.responsiveConfig(options || {}));
 
-            self.imageSrc = self.$elem.data(self.options.attrImageZoomSrc) ? self.$elem.data(self.options.attrImageZoomSrc) : self.$elem.attr('src');
+            //self.imageSrc = self.$elem.data(self.options.attrImageZoomSrc) ? self.$elem.data(self.options.attrImageZoomSrc) : self.$elem.attr('src');
+            self.imageSrc = self.$elem.attr('data-'+self.options.attrImageZoomSrc) ? self.$elem.attr('data-'+self.options.attrImageZoomSrc) : self.$elem.attr('src');
 
             if (!self.options.enabled) {
                 return;
@@ -68,12 +68,14 @@ if (typeof Object.create !== 'function') {
             self.refresh(1);
 
             //Create the image swap from the gallery
-            $galleries = $(self.options.gallery ? ('#' + self.options.gallery) : self.options.gallerySelector);
-            $galleries.on('click.zoom', self.options.galleryItem, function (e) {
+            var galleryEvent = self.options.galleryEvent + '.ezpspace';
+            galleryEvent += self.options.touchEnabled ? ' touchend.ezpspace' : '';
+            self.$galleries = $(self.options.gallery ? ('#' + self.options.gallery) : self.options.gallerySelector);
+            self.$galleries.on(galleryEvent, self.options.galleryItem, function (e) {
 
                 //Set a class on the currently active gallery image
                 if (self.options.galleryActiveClass) {
-                    $(self.options.galleryItem, $galleries).removeClass(self.options.galleryActiveClass);
+                    $(self.options.galleryItem, self.$galleries).removeClass(self.options.galleryActiveClass);
                     $(this).addClass(self.options.galleryActiveClass);
                 }
                 //stop any link on the a tag from working
@@ -202,6 +204,8 @@ if (typeof Object.create !== 'function') {
                 //has a border been put on the image? Lets cater for this
                 var borderWidth = self.$elem.css('border-left-width');
 
+                if (self.options.scrollZoom) self.zoomLens = $('<div class="zoomLens"/>');
+
                 return {
                     display: 'none',
                     position: 'absolute',
@@ -298,7 +302,7 @@ if (typeof Object.create !== 'function') {
             //create the div's                                                + ""
             //self.zoomContainer = $('<div/>').addClass('zoomContainer').css({"position":"relative", "height":self.nzHeight, "width":self.nzWidth});
 
-            self.zoomContainer = $('<div class="zoomContainer" ' + 'uuid="' + self.options.zoomId + '"/>');
+            self.zoomContainer = $('<div class="' + self.options.container + '" ' + 'uuid="' + self.options.zoomId + '"/>');
             self.zoomContainer.css({
                 position: 'absolute',
                 top: self.nzOffset.top,
@@ -308,7 +312,7 @@ if (typeof Object.create !== 'function') {
                 zIndex: self.options.zIndex
             });
             if (self.$elem.attr('id')) {
-                self.zoomContainer.attr('id', self.$elem.attr('id') + '-zoomContainer');
+                self.zoomContainer.attr('id', self.$elem.attr('id') + '-' + self.options.container);
             }
             $(self.options.zoomContainerAppendTo).append(self.zoomContainer);
 
@@ -368,6 +372,7 @@ if (typeof Object.create !== 'function') {
             self.zoomWindow.wrap(self.zoomWindowContainer);
 
             if (self.options.zoomType === 'lens') {
+                self.zoomContainer.css('display', 'none');
                 self.zoomLens.css({
                     backgroundImage: 'url("' + self.imageSrc + '")'
                 });
@@ -584,7 +589,8 @@ if (typeof Object.create !== 'function') {
         },
         destroy: function () {
             var self = this;
-            self.$elem.off('ezpspace');
+            self.$elem.off('.ezpspace');
+            self.$galleries.off('.ezpspace');
             $(self.zoomContainer).remove();
             if (self.options.loadingIcon && !!self.spinner && !!self.spinner.length) {
                 self.spinner.remove();
@@ -609,6 +615,7 @@ if (typeof Object.create !== 'function') {
                         self.showHideWindow('show');
                     }
                     if (self.options.showLens) {
+                        self.showHideZoomContainer('show');
                         self.showHideLens('show');
                     }
                     if (self.options.tint && self.options.zoomType !== 'inner') {
@@ -625,6 +632,7 @@ if (typeof Object.create !== 'function') {
                     self.showHideWindow('hide');
                 }
                 if (self.options.showLens) {
+                    self.showHideZoomContainer('hide');
                     self.showHideLens('hide');
                 }
                 if (self.options.tint) {
@@ -636,7 +644,7 @@ if (typeof Object.create !== 'function') {
 
             var self = this;
 
-            if (!self.options.zoomEnabled) {
+            if (!self.options.zoomEnabled || e === undefined) {
                 return false;
             }
 
@@ -1153,8 +1161,9 @@ if (typeof Object.create !== 'function') {
                         self.yp = 0;
                     }
                     var interval = 16;
-                    if (Number.isInteger(parseInt(self.options.easing))) {
-                        interval = parseInt(self.options.easing);
+                    var easingInterval = parseInt(self.options.easing);
+                    if (typeof easingInterval === 'number' && isFinite(easingInterval) && Math.floor(easingInterval) === easingInterval) {
+                        interval = easingInterval;
                     }
                     //if loop not already started, then run it
                     if (!self.loop) {
@@ -1939,6 +1948,7 @@ if (typeof Object.create !== 'function') {
     };
 
     $.fn.ezPlus.options = {
+        container: 'ZoomContainer',
         attrImageZoomSrc: 'zoom-image', // attribute to plugin use for zoom
         borderColour: '#888',
         borderSize: 4,
@@ -1955,6 +1965,7 @@ if (typeof Object.create !== 'function') {
         galleryActiveClass: 'zoomGalleryActive',
         gallerySelector: false,
         galleryItem: 'a',
+        galleryEvent: 'click',
 
         imageCrossfade: false,
 
