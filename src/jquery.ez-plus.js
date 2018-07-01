@@ -203,6 +203,9 @@ if (typeof Object.create !== 'function') {
                 //has a border been put on the image? Lets cater for this
                 var borderWidth = self.$elem.css('border-left-width');
 
+                if (self.options.scrollZoom)
+                    self.zoomLens = $('<div class="zoomLens"/>');
+                
                 return {
                     display: 'none',
                     position: 'absolute',
