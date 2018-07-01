@@ -3,7 +3,7 @@
 // jscs:enable
 /* globals jQuery */
 /*
- * jQuery ezPlus 1.1.22
+ * jQuery ezPlus 1.1.23
  * Demo's and documentation:
  * http://igorlino.github.io/elevatezoom-plus/
  *

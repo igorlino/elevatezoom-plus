@@ -1,3 +1,14 @@
+<a name="1.2.3"></a>
+
+# 1.2.3 (2018-01-July)
+
++ FIX: Fix for inner zoomType with scrollZoom from triggering error and not working.
+TypeError: self.zoomLens is undefined line:1197
+
++ IMPROVEMENT:
+jQuery .data() is initially populated with values from the data- attributes, but setting it only stores the associated new value in memory. It doesn't change the attribute in the DOM. 
+This will make possible, populating the data with new information and ez-plus read the new information.
+
 <a name="1.2.2"></a>
 
 # 1.2.2 (2017-27-November)
