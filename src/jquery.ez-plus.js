@@ -32,7 +32,7 @@ if (typeof Object.create !== 'function') {
 
             self.options = $.extend({}, $.fn.ezPlus.options, self.responsiveConfig(options || {}));
 
-            self.imageSrc = self.$elem.data(self.options.attrImageZoomSrc) ? self.$elem.data(self.options.attrImageZoomSrc) : self.$elem.attr('src');
+            self.imageSrc = self.$elem.attr('data-'+self.options.attrImageZoomSrc) ? self.$elem.attr('data-'+self.options.attrImageZoomSrc) : self.$elem.attr('src');
 
             if (!self.options.enabled) {
                 return;
@@ -203,6 +203,9 @@ if (typeof Object.create !== 'function') {
                 //has a border been put on the image? Lets cater for this
                 var borderWidth = self.$elem.css('border-left-width');
 
+                if (self.options.scrollZoom)
+                    self.zoomLens = $('<div class="zoomLens"/>');
+                
                 return {
                     display: 'none',
                     position: 'absolute',
