@@ -477,12 +477,11 @@ if (typeof Object.create !== 'function') {
             //  lensFadeOut: 500,  zoomTintFadeIn
             self.zoomContainer
                 .add(self.$elem)
-                .mouseenter(function () {
+                .hover(function () {
                     if (self.overWindow === false) {
                         self.setElements('show');
                     }
-                })
-                .mouseleave(function () {
+                }, function () {
                     if (!self.scrollLock) {
                         self.setElements('hide');
                         self.options.onDestroy(self.$elem);
@@ -491,10 +490,10 @@ if (typeof Object.create !== 'function') {
             //end ove image
 
             if (self.options.zoomType !== 'inner') {
-                self.zoomWindow.mouseenter(function () {
+                self.zoomWindow.hover(function () {
                     self.overWindow = true;
                     self.setElements('hide');
-                }).mouseleave(function () {
+                }, function () {
                     self.overWindow = false;
                 });
             }
