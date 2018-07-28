@@ -22,7 +22,7 @@ if (typeof Object.create !== 'function') {
     };
 }
 
-(function ($, window, document, undefined) {
+(function ($, window, document) {
     var EZP = {
         init: function (options, elem) {
             var self = this;
@@ -403,25 +403,18 @@ if (typeof Object.create !== 'function') {
                     self.setPosition(touch);
 
                 });
-                self.zoomContainer.on('touchend.ezpspace', function (e) {
-                    self.showHideWindow('hide');
-                    if (self.options.showLens) {
-                        self.showHideLens('hide');
-                    }
-                    if (self.options.tint && self.options.zoomType !== 'inner') {
-                        self.showHideTint('hide');
-                    }
-                });
+                self.zoomContainer
+                    .add(self.$elem)
+                    .on('touchend.ezpspace', function (e) {
+                        self.showHideWindow('hide');
+                        if (self.options.showLens) {
+                            self.showHideLens('hide');
+                        }
+                        if (self.options.tint && self.options.zoomType !== 'inner') {
+                            self.showHideTint('hide');
+                        }
+                    });
 
-                self.$elem.on('touchend.ezpspace', function (e) {
-                    self.showHideWindow('hide');
-                    if (self.options.showLens) {
-                        self.showHideLens('hide');
-                    }
-                    if (self.options.tint && self.options.zoomType !== 'inner') {
-                        self.showHideTint('hide');
-                    }
-                });
                 if (self.options.showLens) {
                     self.zoomLens.on('touchmove.ezpspace', function (e) {
 
@@ -443,21 +436,16 @@ if (typeof Object.create !== 'function') {
             }
 
             // Needed to work in IE
-            self.$elem.on('mousemove.ezpspace', function (e) {
-                if (self.overWindow === false) {
-                    self.setElements('show');
-                }
-                mouseMoveZoomHandler(e);
-            });
-
             self.zoomContainer.on('click.ezpspace touchstart.ezpspace', self.options.onImageClick);
 
-            self.zoomContainer.on('mousemove.ezpspace', function (e) {
-                if (self.overWindow === false) {
-                    self.setElements('show');
-                }
-                mouseMoveZoomHandler(e);
-            });
+            self.zoomContainer
+                .add(self.$elem)
+                .on('mousemove.ezpspace', function (e) {
+                    if (self.overWindow === false) {
+                        self.setElements('show');
+                    }
+                    mouseMoveZoomHandler(e);
+                });
 
             function mouseMoveZoomHandler(e) {
                 //self.overWindow = true;
@@ -487,16 +475,19 @@ if (typeof Object.create !== 'function') {
             }
 
             //  lensFadeOut: 500,  zoomTintFadeIn
-            self.zoomContainer.add(self.$elem).mouseenter(function () {
-                if (self.overWindow === false) {
-                    self.setElements('show');
-                }
-            }).mouseleave(function () {
-                if (!self.scrollLock) {
-                    self.setElements('hide');
-                    self.options.onDestroy(self.$elem);
-                }
-            });
+            self.zoomContainer
+                .add(self.$elem)
+                .mouseenter(function () {
+                    if (self.overWindow === false) {
+                        self.setElements('show');
+                    }
+                })
+                .mouseleave(function () {
+                    if (!self.scrollLock) {
+                        self.setElements('hide');
+                        self.options.onDestroy(self.$elem);
+                    }
+                });
             //end ove image
 
             if (self.options.zoomType !== 'inner') {
