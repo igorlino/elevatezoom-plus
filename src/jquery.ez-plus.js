@@ -3,7 +3,7 @@
 // jscs:enable
 /* globals jQuery */
 /*
- * jQuery ezPlus 1.1.23
+ * jQuery ezPlus 1.2.3
  * Demo's and documentation:
  * http://igorlino.github.io/elevatezoom-plus/
  *
@@ -441,19 +441,13 @@ if (typeof Object.create !== 'function') {
                     });
                 }
             }
-            //Needed to work in IE
+
+            // Needed to work in IE
             self.$elem.on('mousemove.ezpspace', function (e) {
                 if (self.overWindow === false) {
                     self.setElements('show');
                 }
-                //make sure on orientation change the setposition is not fired
-                if (self.lastX !== e.clientX || self.lastY !== e.clientY) {
-                    self.setPosition(e);
-                    self.currentLoc = e;
-                }
-                self.lastX = e.clientX;
-                self.lastY = e.clientY;
-
+                mouseMoveZoomHandler(e);
             });
 
             self.zoomContainer.on('click.ezpspace touchstart.ezpspace', self.options.onImageClick);
