@@ -3,7 +3,7 @@
 // jscs:enable
 /* globals jQuery */
 /*
- * jQuery ezPlus 1.1.23
+ * jQuery ezPlus 1.2.3
  * Demo's and documentation:
  * http://igorlino.github.io/elevatezoom-plus/
  *
@@ -22,7 +22,7 @@ if (typeof Object.create !== 'function') {
     };
 }
 
-(function ($, window, document, undefined) {
+(function ($, window, document) {
     var EZP = {
         init: function (options, elem) {
             var self = this;
@@ -403,25 +403,18 @@ if (typeof Object.create !== 'function') {
                     self.setPosition(touch);
 
                 });
-                self.zoomContainer.on('touchend.ezpspace', function (e) {
-                    self.showHideWindow('hide');
-                    if (self.options.showLens) {
-                        self.showHideLens('hide');
-                    }
-                    if (self.options.tint && self.options.zoomType !== 'inner') {
-                        self.showHideTint('hide');
-                    }
-                });
+                self.zoomContainer
+                    .add(self.$elem)
+                    .on('touchend.ezpspace', function (e) {
+                        self.showHideWindow('hide');
+                        if (self.options.showLens) {
+                            self.showHideLens('hide');
+                        }
+                        if (self.options.tint && self.options.zoomType !== 'inner') {
+                            self.showHideTint('hide');
+                        }
+                    });
 
-                self.$elem.on('touchend.ezpspace', function (e) {
-                    self.showHideWindow('hide');
-                    if (self.options.showLens) {
-                        self.showHideLens('hide');
-                    }
-                    if (self.options.tint && self.options.zoomType !== 'inner') {
-                        self.showHideTint('hide');
-                    }
-                });
                 if (self.options.showLens) {
                     self.zoomLens.on('touchmove.ezpspace', function (e) {
 
@@ -441,29 +434,18 @@ if (typeof Object.create !== 'function') {
                     });
                 }
             }
-            //Needed to work in IE
-            self.$elem.on('mousemove.ezpspace', function (e) {
-                if (self.overWindow === false) {
-                    self.setElements('show');
-                }
-                //make sure on orientation change the setposition is not fired
-                if (self.lastX !== e.clientX || self.lastY !== e.clientY) {
-                    self.setPosition(e);
-                    self.currentLoc = e;
-                }
-                self.lastX = e.clientX;
-                self.lastY = e.clientY;
 
-            });
-
+            // Needed to work in IE
             self.zoomContainer.on('click.ezpspace touchstart.ezpspace', self.options.onImageClick);
 
-            self.zoomContainer.on('mousemove.ezpspace', function (e) {
-                if (self.overWindow === false) {
-                    self.setElements('show');
-                }
-                mouseMoveZoomHandler(e);
-            });
+            self.zoomContainer
+                .add(self.$elem)
+                .on('mousemove.ezpspace', function (e) {
+                    if (self.overWindow === false) {
+                        self.setElements('show');
+                    }
+                    mouseMoveZoomHandler(e);
+                });
 
             function mouseMoveZoomHandler(e) {
                 //self.overWindow = true;
@@ -493,23 +475,25 @@ if (typeof Object.create !== 'function') {
             }
 
             //  lensFadeOut: 500,  zoomTintFadeIn
-            self.zoomContainer.add(self.$elem).mouseenter(function () {
-                if (self.overWindow === false) {
-                    self.setElements('show');
-                }
-            }).mouseleave(function () {
-                if (!self.scrollLock) {
-                    self.setElements('hide');
-                    self.options.onDestroy(self.$elem);
-                }
-            });
+            self.zoomContainer
+                .add(self.$elem)
+                .hover(function () {
+                    if (self.overWindow === false) {
+                        self.setElements('show');
+                    }
+                }, function () {
+                    if (!self.scrollLock) {
+                        self.setElements('hide');
+                        self.options.onDestroy(self.$elem);
+                    }
+                });
             //end ove image
 
             if (self.options.zoomType !== 'inner') {
-                self.zoomWindow.mouseenter(function () {
+                self.zoomWindow.hover(function () {
                     self.overWindow = true;
                     self.setElements('hide');
-                }).mouseleave(function () {
+                }, function () {
                     self.overWindow = false;
                 });
             }
@@ -727,8 +711,8 @@ if (typeof Object.create !== 'function') {
                 width: self.nzWidth,  // new code
                 height: self.nzHeight // new code
             });
-            self.mouseLeft = parseInt(e.pageX - self.nzOffset.left);
-            self.mouseTop = parseInt(e.pageY - self.nzOffset.top);
+            self.mouseLeft = parseInt(e.pageX - self.pageOffsetX - self.nzOffset.left);
+            self.mouseTop = parseInt(e.pageY - self.pageOffsetY - self.nzOffset.top);
             //calculate the Location of the Lens
 
             //calculate the bound regions - but only if zoom window
@@ -795,8 +779,8 @@ if (typeof Object.create !== 'function') {
                 //if lens zoom
                 if (self.options.zoomType === 'lens') {
 
-                    self.windowLeftPos = ((e.pageX - self.nzOffset.left) * self.widthRatio - self.zoomLens.width() / 2) * -1;
-                    self.windowTopPos = ((e.pageY - self.nzOffset.top) * self.heightRatio - self.zoomLens.height() / 2) * -1;
+                    self.windowLeftPos = ((e.pageX - self.pageOffsetX - self.nzOffset.left) * self.widthRatio - self.zoomLens.width() / 2) * -1;
+                    self.windowTopPos = ((e.pageY - self.pageOffsetY - self.nzOffset.top) * self.heightRatio - self.zoomLens.height() / 2) * -1;
                     self.zoomLens.css({
                         backgroundPosition: '' + self.windowLeftPos + 'px ' + self.windowTopPos + 'px'
                     });
@@ -1099,8 +1083,8 @@ if (typeof Object.create !== 'function') {
 
             }
 
-            self.windowLeftPos = ((e.pageX - self.nzOffset.left) * self.widthRatio - self.zoomWindow.width() / 2) * -1;
-            self.windowTopPos = ((e.pageY - self.nzOffset.top) * self.heightRatio - self.zoomWindow.height() / 2) * -1;
+            self.windowLeftPos = ((e.pageX - self.pageOffsetX - self.nzOffset.left) * self.widthRatio - self.zoomWindow.width() / 2) * -1;
+            self.windowTopPos = ((e.pageY - self.pageOffsetY - self.nzOffset.top) * self.heightRatio - self.zoomWindow.height() / 2) * -1;
             if (self.Etoppos) {
                 self.windowTopPos = 0;
             }
@@ -1178,8 +1162,8 @@ if (typeof Object.create !== 'function') {
                                 self.xp = self.windowLeftPos;
                                 self.yp = self.windowTopPos;
 
-                                self.xp = ((e.pageX - self.nzOffset.left) * self.widthRatio - self.zoomWindow.width() / 2) * (-1);
-                                self.yp = (((e.pageY - self.nzOffset.top) * self.heightRatio - self.zoomWindow.height() / 2) * (-1));
+                                self.xp = ((e.pageX - self.pageOffsetX - self.nzOffset.left) * self.widthRatio - self.zoomWindow.width() / 2) * (-1);
+                                self.yp = (((e.pageY - self.pageOffsetY - self.nzOffset.top) * self.heightRatio - self.zoomWindow.height() / 2) * (-1));
 
                                 if (self.changeBgSize) {
                                     if (self.nzHeight > self.nzWidth) {
@@ -1345,8 +1329,8 @@ if (typeof Object.create !== 'function') {
             var zoomLensWidth = self.zoomLens.width();
             var zoomLensHeight = self.zoomLens.height();
             self.updateOffset(self);
-            self.tintpos = ((e.pageX - self.nzOffset.left) - (zoomLensWidth / 2)) * -1;
-            self.tintposy = ((e.pageY - self.nzOffset.top) - zoomLensHeight / 2) * -1;
+            self.tintpos = ((e.pageX - self.pageOffsetX - self.nzOffset.left) - (zoomLensWidth / 2)) * -1;
+            self.tintposy = ((e.pageY - self.pageOffsetY - self.nzOffset.top) - zoomLensHeight / 2) * -1;
             if (self.Etoppos) {
                 self.tintposy = 0;
             }
@@ -1898,8 +1882,22 @@ if (typeof Object.create !== 'function') {
                 self.nzOffset.top = self.$elem.offset().top - appendedPosition.top;
                 self.nzOffset.left = self.$elem.offset().left - appendedPosition.left;
 
+                // NOTE: When initialising ezPlus on an element
+                // present inside a dialog the positions will
+                // not be correct unless the dialog occupies the
+                // entire viewport. These page offsets will help
+                // zoom lens and zoom window to be positioned
+                // correctly
+
+                // Update page offsets
+                self.pageOffsetX = appendedPosition.left;
+                self.pageOffsetY = appendedPosition.top;
             } else {
                 self.nzOffset = self.$elem.offset();
+
+                // Update page offsets
+                self.pageOffsetX = 0;
+                self.pageOffsetY = 0;
             }
         },
 
