@@ -1,3 +1,10 @@
+<a name="1.2.4"></a>
+
+# 1.2.4 (2018-12-September)
+
++ FIX: Responsive feature does not destroy zoomContainers. Issue #36
++ FIX: Fix zoom lens and window positioning inside dialog. When initialising ezPlus on an element present inside a dialog the positions will not be correct unless the dialog occupies the entire viewport. These page offsets will help zoom lens and zoom window to be positioned correctly
+
 <a name="1.2.3"></a>
 
 # 1.2.3 (2018-01-July)
