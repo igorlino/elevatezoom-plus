@@ -161,6 +161,9 @@ if (typeof Object.create !== 'function') {
                         height: self.nzHeight,
                         width: self.nzWidth
                     });
+				if(self.$elem.parent().hasClass('zoomWrapper')){
+					self.$elem.unwrap();
+				}
                 self.zoomWrap = self.$elem.wrap(elementZoomWrapper);
                 self.$elem.css({
                     position: 'absolute'
@@ -314,6 +317,7 @@ if (typeof Object.create !== 'function') {
             if (self.$elem.attr('id')) {
                 self.zoomContainer.attr('id', self.$elem.attr('id') + '-' + self.options.container);
             }
+			$('.' + self.options.container).remove();
             $(self.options.zoomContainerAppendTo).append(self.zoomContainer);
 
             //this will add overflow hidden and contrain the lens on lens mode
