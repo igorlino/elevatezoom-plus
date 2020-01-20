@@ -1124,14 +1124,14 @@ if (typeof Object.create !== 'function') {
                 }
                 // adjust images less than the window height
 
-                if (self.options.zoomType === 'window') {
-                    if (self.largeHeight < self.options.zoomWindowHeight) {
-                        self.windowTopPos = 0;
-                    }
-                    if (self.largeWidth < self.options.zoomWindowWidth) {
-                        self.windowLeftPos = 0;
-                    }
-                }
+                // if (self.options.zoomType === 'window') {
+                //     if (self.largeHeight < self.options.zoomWindowHeight) {
+                //         self.windowTopPos = 0;
+                //     }
+                //     if (self.largeWidth < self.options.zoomWindowWidth) {
+                //         self.windowLeftPos = 0;
+                //     }
+                // }
                 //set the zoomwindow background position
                 if (self.options.easing) {
 
