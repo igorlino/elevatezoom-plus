@@ -2,7 +2,7 @@
   "name": "ez-plus",
   "main": "src/jquery.ez-plus.js",
   "title": "EZ Plus",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "A jQuery image zoom plug-in, with tints, easing and gallery integration.",
   "keywords": [
     "zoom",

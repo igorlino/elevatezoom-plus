@@ -3,7 +3,7 @@
 // jscs:enable
 /* globals jQuery */
 /*
- * jQuery ezPlus 1.2.4
+ * jQuery ezPlus 1.2.5
  * Demo's and documentation:
  * http://igorlino.github.io/elevatezoom-plus/
  *
@@ -208,7 +208,7 @@ if (typeof Object.create !== 'function') {
 
                 if (self.options.scrollZoom)
                     self.zoomLens = $('<div class="zoomLens"/>');
-                
+
                 return {
                     display: 'none',
                     position: 'absolute',

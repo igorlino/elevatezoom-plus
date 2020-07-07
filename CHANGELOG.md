@@ -1,5 +1,10 @@
-<a name="1.2.4"></a>
+<a name="1.2.5"></a>
 
+# 1.2.5 (2020-07-July)
+
++ FIX: problems using ezPlus with multiple images on my page, only same container with identical ID needs to be removed. Issue #120 (Thanks volkerdobler) 
+
+<a name="1.2.4"></a>
 # 1.2.4 (2018-12-September)
 
 + FIX: Responsive feature does not destroy zoomContainers. Issue #36
